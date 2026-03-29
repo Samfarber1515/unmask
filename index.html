@@ -1,486 +1,526 @@
-<html class="dark" lang="en"><head>
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>UNMASK | Industrial Intelligence</title>
+<title>UNMASK | AI Report Cards for Your Entire Company</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Inter+Tight:wght@700;800;900&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#FF4D00", // Safety Orange
-                        "background": "#0e0e0e", // Deep Obsidian
-                        "surface": "#1a1a1a", // Charcoal
-                        "on-background": "#F5F5F7",
-                        "on-surface": "#F5F5F7",
-                        "secondary": "#A1A1A6",
-                        "outline": "#2a2a2a",
-                        "primary-container": "#FF4D00",
-                        "on-primary-container": "#FFFFFF",
-                        "surface-container-low": "#141414",
-                        "surface-container-lowest": "#0e0e0e",
-                        "surface-container-high": "#222222"
-                    },
-                    fontFamily: {
-                        "headline": ["Inter Tight", "Inter", "sans-serif"],
-                        "body": ["Inter", "sans-serif"],
-                        "label": ["Space Grotesk", "monospace"]
-                    },
-                    borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "999999px"},
-                },
-            },
-        }
-    </script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#FF4D00",
+          "background": "#0e0e0e",
+          "surface": "#1a1a1a",
+          "on-background": "#F5F5F7",
+          "on-surface": "#F5F5F7",
+          "secondary": "#A1A1A6",
+          "outline": "#2a2a2a",
+          "surface-container-low": "#141414",
+          "surface-container-lowest": "#0e0e0e",
+          "surface-container-high": "#222222"
+        },
+        fontFamily: {
+          "headline": ["Inter Tight", "Inter", "sans-serif"],
+          "body": ["Inter", "sans-serif"],
+          "label": ["Space Grotesk", "monospace"]
+        },
+        borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "999999px"},
+      },
+    },
+  }
+</script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .industrial-glow {
-            box-shadow: 0 0 25px rgba(255, 77, 0, 0.25);
-        }
-        .grid-pattern {
-            background-image: radial-gradient(circle, #2a2a2a 1px, transparent 1px);
-            background-size: 32px 32px;
-        }
-        .mono-logo {
-            filter: grayscale(1) brightness(2) contrast(1.5);
-        }
-        .dashboard-row:hover {
-            background-color: rgba(255, 77, 0, 0.03);
-        }
-        .g2-badge-border {
-            clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
-        }
-        .brand-logo-svg {
-            height: 18px;
-            fill: currentColor;
-        }
-    </style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .industrial-glow { box-shadow: 0 0 25px rgba(255, 77, 0, 0.25); }
+  .grid-pattern { background-image: radial-gradient(circle, #2a2a2a 1px, transparent 1px); background-size: 32px 32px; }
+  .dashboard-row:hover { background-color: rgba(255, 77, 0, 0.03); }
+  .grade-a-plus { color: #FF4D00; }
+  .grade-a { color: #F5F5F7; }
+  .grade-b { color: #A1A1A6; }
+  .grade-c { color: #ef4444; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255,77,0,0.3); }
+    50% { box-shadow: 0 0 40px rgba(255,77,0,0.6); }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  .fade-up { animation: fadeUp 0.7s ease forwards; }
+  .fade-up-1 { animation: fadeUp 0.7s 0.1s ease both; }
+  .fade-up-2 { animation: fadeUp 0.7s 0.25s ease both; }
+  .fade-up-3 { animation: fadeUp 0.7s 0.4s ease both; }
+  .fade-up-4 { animation: fadeUp 0.7s 0.55s ease both; }
+  .pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+  .cursor-blink { animation: blink 1s step-end infinite; }
+
+  .new-category-tag {
+    background: rgba(255,77,0,0.12);
+    border: 1px solid rgba(255,77,0,0.3);
+    color: #FF4D00;
+  }
+  .score-positive { color: #FF4D00; }
+  .score-negative { color: #ef4444; }
+  .report-card-border { border-top: 4px solid #FF4D00; }
+</style>
 </head>
 <body class="bg-background text-on-background font-body selection:bg-primary selection:text-white">
-<!-- TopNavBar -->
+
+<!-- NAV -->
 <nav class="bg-background/80 backdrop-blur-md flex justify-between items-center w-full px-6 h-14 fixed top-0 z-50 border-b border-outline">
-<div class="text-xl font-black tracking-tighter text-primary" style="">UNMASK</div>
-<div class="hidden md:flex items-center space-x-8 h-full">
-<a class="text-primary font-bold border-b-2 border-primary pb-1 font-mono text-[0.75rem] uppercase tracking-wider transition-colors duration-150 active:scale-95" href="#" style="">Model</a>
-<a class="text-secondary font-mono text-[0.75rem] uppercase tracking-wider hover:text-on-background transition-colors duration-150 active:scale-95" href="#" style="">ROI</a>
-<a class="text-secondary font-mono text-[0.75rem] uppercase tracking-wider hover:text-on-background transition-colors duration-150 active:scale-95" href="#" style="">Login</a>
-</div>
-<button class="bg-primary text-white px-5 py-2 font-label text-[0.7rem] font-bold uppercase tracking-widest hover:brightness-110 transition-all active:scale-95" style="">
-        Authorize Access
-    </button>
+  <div class="text-xl font-black tracking-tighter text-primary">UNMASK</div>
+  <div class="hidden md:flex items-center space-x-8 h-full">
+    <a class="text-primary font-bold border-b-2 border-primary pb-1 font-mono text-[0.75rem] uppercase tracking-wider" href="#">How It Works</a>
+    <a class="text-secondary font-mono text-[0.75rem] uppercase tracking-wider hover:text-on-background transition-colors" href="#">Pricing</a>
+    <a class="text-secondary font-mono text-[0.75rem] uppercase tracking-wider hover:text-on-background transition-colors" href="#">Login</a>
+  </div>
+  <button class="bg-primary text-white px-5 py-2 font-label text-[0.7rem] font-bold uppercase tracking-widest hover:brightness-110 transition-all active:scale-95">
+    Get Early Access
+  </button>
 </nav>
+
 <main class="pt-14">
-<!-- Hero Section -->
-<section class="relative min-h-[90vh] flex flex-col items-center justify-center px-6 md:px-12 py-20 overflow-hidden grid-pattern">
-<div class="max-w-7xl w-full z-10 flex flex-col md:flex-row items-center gap-16">
-<div class="w-full md:w-3/5">
-<div class="flex items-center gap-4 mb-8">
-<span class="font-label text-primary text-[0.7rem] tracking-[0.4em] uppercase font-bold" style="">System_Active // v2.0.0</span>
-<div class="h-px w-24 bg-outline"></div>
-</div>
-<h1 class="text-[5rem] md:text-[7rem] font-black leading-[0.85] tracking-tighter text-on-background mb-8 font-headline uppercase" style="">
-                    UNMASK<br/><span class="text-primary" style="">YOUR ORG.</span>
-</h1>
-<p class="text-xl md:text-2xl text-secondary max-w-2xl mb-12 leading-relaxed font-light" style="">
-                    The first business performance tool that replaces biased reviews with objective, <span class="text-on-background font-semibold" style="">basketball-style +/- scores</span> for every role, from Sales to Engineering.
-                </p>
-<div class="flex flex-col md:flex-row gap-5 mb-20">
-<button class="bg-primary text-white px-12 py-5 text-lg font-black uppercase tracking-tighter industrial-glow hover:brightness-110 transition-all flex items-center gap-3" style="">
-                        INITIATE SCAN
-                        <span class="material-symbols-outlined" style="">arrow_forward</span>
-</button>
-<button class="border border-outline text-on-surface px-12 py-5 text-lg font-label uppercase tracking-widest hover:bg-surface transition-colors flex items-center gap-3" style="">GET A DEMO <span class="material-symbols-outlined text-secondary">play_circle</span></button>
-</div>
-<!-- Trust Banner -->
-<div class="flex flex-col gap-6">
-<span class="font-label text-[10px] uppercase tracking-[0.3em] text-secondary/60 font-bold" style="">Powering high-growth orgs at</span>
-<div class="flex flex-wrap items-center gap-x-10 gap-y-8 opacity-60">
-<span class="font-headline text-2xl font-black tracking-tighter text-on-background mono-logo" style="">STRIPE</span>
-<span class="font-headline text-2xl font-black tracking-tighter text-on-background mono-logo" style="">PLAID</span>
-<span class="font-headline text-2xl font-black tracking-tighter text-on-background mono-logo" style="">RIPPLING</span>
-<span class="font-headline text-2xl font-black tracking-tighter text-on-background mono-logo" style="">GUSTO</span>
-<span class="font-headline text-2xl font-black tracking-tighter text-on-background mono-logo" style="">RAMP</span>
-<span class="font-headline text-2xl font-black tracking-tighter text-on-background mono-logo" style="">VANTA</span>
-<span class="font-headline text-2xl font-black tracking-tighter text-on-background mono-logo" style="">BREX</span>
-<span class="font-headline text-2xl font-black tracking-tighter text-on-background mono-logo" style="">DEEL</span>
-</div>
-</div>
-</div>
-<div class="w-full md:w-2/5 relative">
-<div class="relative z-10 flex items-center justify-center">
-<img alt="Cinematic humanoid unmasking" class="w-full h-auto object-contain mix-blend-screen grayscale hover:grayscale-0 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEZxOs0A1elFUdRrwTb8Lq3fkgSfkodq9Of-l1J0WZ_SC5nE0YRpyviNnjF5fra6-TT4ssZJ_9HZhX9E-5vulP-7JhWtltEb7CGIRcko-U4mknXYbG_qCf_FZUd2zlJS-QD7SwCF_Q2SzmMr6sMBCLWW6hiMN02febhpwjBuoATA3_upYOVCzNsjissBqOz_PfI-nphLNVcMhBHusfD-wCGXELdl2hz8M-zu6GfCQR-iuLvhxFn3bqls68GDHmbE74qO4i8AXUkPv9" style=""/>
-</div>
-</div>
-</div>
-</section>
-<!-- Social Proof Banner - Thinner & High Quality -->
-<section class="bg-primary py-4 px-6 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 overflow-hidden">
-<div class="flex items-center gap-4">
-<svg class="brand-logo-svg text-black/80" viewbox="0 0 100 20" xmlns="http://www.w3.org/2000/svg"><path d="M12 4v12h3V4h-3zm18 0v12h2.5V7l4 9h2l4-9v9H45V4h-3.5l-5 10.5L31.5 4H28zm24 0v12h11.5v-2.5h-9V4H52zm20 0l-3.5 12h3l1.5-6h6l1.5 6h3L84 4h-12z"></path></svg>
-<p class="text-white font-headline text-sm font-black italic tracking-tight" style="">"The Moneyball moment for corporate performance."</p>
-</div>
-<div class="h-6 w-px bg-white/30 hidden md:block"></div>
-<div class="flex items-center gap-4">
-<svg class="brand-logo-svg text-black/80" viewbox="0 0 120 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 4h20v4H12v8H8V8H0V4zm25 0h12v4H29v2h8v4h-8v2h8v4h-8v2h8v4h25V4zm17 0h12v4h-8v8h-4V4zm17 0h12v4h-8v2h8v4h-8v2h8v4h-12V4zm17 0h4v12h-4V4zm8 0h4v12h-4V4z"></path></svg>
-<p class="text-white font-headline text-sm font-black italic tracking-tight" style="">"Measure actual contribution across all departments."</p>
-</div>
-<div class="h-6 w-px bg-white/30 hidden md:block"></div>
-<div class="flex items-center gap-4">
-<svg class="brand-logo-svg text-black/80" viewbox="0 0 100 20" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h4v12H4V4zm8 0h4v12h-4V4zm8 0h4v12h-4V4zm8 0h4v12h-4V4zm8 0h4v12h-4V4z"></path></svg>
-<p class="text-white font-headline text-sm font-black italic tracking-tight" style="">"A truth engine for your entire payroll."</p>
-</div>
-</section>
-<!-- Dashboard Section -->
-<section class="py-32 px-6 md:px-12 bg-background">
-<div class="mb-16 border-l-4 border-primary pl-8">
-<span class="font-label text-primary text-sm tracking-[0.3em] uppercase mb-3 block font-bold" style="">OBJECTIVE REALITY</span>
-<h2 class="text-5xl md:text-7xl font-headline font-black tracking-tighter uppercase leading-none" style="">THE  MONEYBALL  moment<div>is here .</div></h2>
-</div>
-<div class="bg-[#111111] border border-outline shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col">
-<!-- Dashboard Chrome Header -->
-<div class="bg-surface border-b border-outline flex items-center justify-between px-6 py-4">
-<div class="flex items-center gap-8">
-<div class="flex items-center gap-2">
-<div class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
-<span class="font-label text-[10px] text-on-surface/80 uppercase tracking-[0.2em] font-bold" style="">SYSTEM ACTIVE</span>
-</div>
-<nav class="hidden md:flex items-center gap-6 border-l border-outline/50 pl-8">
-<span class="font-label text-[10px] text-primary uppercase font-bold tracking-[0.2em] cursor-pointer" style="">LIVE_FEED</span>
-<span class="font-label text-[10px] text-secondary uppercase tracking-[0.2em] cursor-pointer hover:text-on-surface transition-colors" style="">ORG_GRAPH</span>
-<span class="font-label text-[10px] text-secondary uppercase tracking-[0.2em] cursor-pointer hover:text-on-surface transition-colors" style="">AUDIT_LOGS</span>
-</nav>
-</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-secondary text-xl cursor-pointer hover:text-primary transition-colors" style="">search</span>
-<span class="material-symbols-outlined text-secondary text-xl cursor-pointer hover:text-primary transition-colors" style="">settings</span>
-</div>
-</div>
-<div class="flex">
-<!-- Dashboard Sidebar -->
-<aside class="hidden md:flex flex-col w-20 border-r border-outline bg-background/50 py-10 items-center gap-10">
-<span class="material-symbols-outlined text-primary text-2xl font-bold" style="">analytics</span>
-<span class="material-symbols-outlined text-secondary hover:text-primary transition-colors cursor-pointer text-2xl" style="">group</span>
-<span class="material-symbols-outlined text-secondary hover:text-primary transition-colors cursor-pointer text-2xl" style="">psychology</span>
-<span class="material-symbols-outlined text-secondary hover:text-primary transition-colors cursor-pointer text-2xl" style="">notifications</span>
-<div class="mt-auto">
-<span class="material-symbols-outlined text-secondary hover:text-on-surface transition-colors cursor-pointer text-2xl" style="">help_outline</span>
-</div>
-</aside>
-<!-- Data Table - Updated columns -->
-<div class="flex-1 overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="border-b border-outline font-label text-[11px] uppercase tracking-[0.2em] text-secondary bg-surface/30">
-<th class="p-8 font-bold" style="">EMPLOYEE</th>
-<th class="p-8 font-bold" style="">TITLE</th>
-<th class="p-8 text-right font-bold" style="">+/- SCORE</th>
-<th class="p-8 text-center font-bold" style="">GRADE</th>
-</tr>
-</thead>
-<tbody class="font-label">
-<tr class="border-b border-outline/50 dashboard-row transition-all group">
-<td class="p-8" style="">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 bg-surface border border-outline flex items-center justify-center font-black text-primary text-xs" style="">A.S.</div>
-<div>
-<div class="text-on-surface font-black uppercase text-sm" style="">A. Sterling</div>
-<div class="text-[10px] text-secondary font-mono uppercase" style="">#USR-8821</div>
-</div>
-</div>
-</td>
-<td class="p-8 text-secondary font-bold text-xs uppercase tracking-tight group-hover:text-primary transition-colors" style="">Head of Sales</td>
-<td class="p-8 text-right text-primary text-2xl font-black tracking-tighter" style="">+142.8</td>
-<td class="p-8 text-center" style="">
-<span class="text-primary text-4xl font-black tracking-tighter" style="">A+</span>
-</td>
-</tr>
-<tr class="border-b border-outline/50 dashboard-row transition-all group">
-<td class="p-8" style="">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 bg-surface border border-outline flex items-center justify-center font-black text-primary text-xs" style="">J.M.</div>
-<div>
-<div class="text-on-surface font-black uppercase text-sm" style="">J. Miller</div>
-<div class="text-[10px] text-secondary font-mono uppercase" style="">#USR-4402</div>
-</div>
-</div>
-</td>
-<td class="p-8 text-secondary font-bold text-xs uppercase tracking-tight group-hover:text-primary transition-colors" style="">Sr. Engineer (Backend)</td>
-<td class="p-8 text-right text-primary text-2xl font-black tracking-tighter" style="">+118.4</td>
-<td class="p-8 text-center" style="">
-<span class="text-on-surface text-4xl font-black tracking-tighter" style="">A</span>
-</td>
-</tr>
-<tr class="border-b border-outline/50 dashboard-row transition-all group">
-<td class="p-8" style="">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 bg-surface border border-outline flex items-center justify-center font-black text-red-500 text-xs" style="">S.K.</div>
-<div>
-<div class="text-on-surface font-black uppercase text-sm" style="">S. Kapoor</div>
-<div class="text-[10px] text-secondary font-mono uppercase" style="">#USR-1099</div>
-</div>
-</div>
-</td>
-<td class="p-8 text-secondary font-bold text-xs uppercase tracking-tight group-hover:text-primary transition-colors" style="">Customer Success Lead</td>
-<td class="p-8 text-right text-red-500 text-2xl font-black tracking-tighter" style="">-22.1</td>
-<td class="p-8 text-center" style="">
-<span class="text-primary/70 text-4xl font-black tracking-tighter" style="">C-</span>
-</td>
-</tr>
-<tr class="border-b border-outline/50 dashboard-row transition-all group">
-<td class="p-8" style="">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 bg-surface border border-outline flex items-center justify-center font-black text-primary text-xs" style="">M.T.</div>
-<div>
-<div class="text-on-surface font-black uppercase text-sm" style="">M. Thorne</div>
-<div class="text-[10px] text-secondary font-mono uppercase" style="">#USR-5523</div>
-</div>
-</div>
-</td>
-<td class="p-8 text-secondary font-bold text-xs uppercase tracking-tight group-hover:text-primary transition-colors" style="">Marketing Manager</td>
-<td class="p-8 text-right text-primary text-2xl font-black tracking-tighter" style="">+84.5</td>
-<td class="p-8 text-center" style="">
-<span class="text-on-surface text-4xl font-black tracking-tighter" style="">B+</span>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="mt-8 flex justify-end">
-<div class="text-[10px] font-label text-secondary uppercase text-right leading-relaxed font-medium tracking-[0.1em]" style="">
-                * ALL SCORES ARE CALCULATED USING REAL-TIME CROSS-PLATFORM METADATA, <br/>
-                OUTPUT FREQUENCY, AND CROSS-DEPARTMENTAL DEPENDENCY IMPACT.
-            </div>
-</div>
-</section>
-<!-- Performance Leadership Section -->
-<section class="py-32 px-6 md:px-12 bg-surface-container-low border-y border-outline overflow-hidden">
-<div class="max-w-7xl mx-auto">
-<div class="flex flex-col lg:flex-row items-center gap-20">
-<div class="w-full lg:w-1/2">
-<div class="flex items-center gap-1 text-primary mb-6">
-<span class="material-symbols-outlined text-2xl" style='font-variation-settings: "FILL" 1;'>star</span>
-<span class="material-symbols-outlined text-2xl" style='font-variation-settings: "FILL" 1;'>star</span>
-<span class="material-symbols-outlined text-2xl" style='font-variation-settings: "FILL" 1;'>star</span>
-<span class="material-symbols-outlined text-2xl" style='font-variation-settings: "FILL" 1;'>star</span>
-<span class="material-symbols-outlined text-2xl" style='font-variation-settings: "FILL" 1;'>star</span>
-</div>
-<h2 class="text-4xl md:text-6xl font-headline font-black tracking-tighter uppercase leading-[1.1] mb-8 text-on-background" style="">
-                        WE'RE THE LEADING PEOPLE INTELLIGENCE PLATFORM
-                    </h2>
-<p class="text-secondary mb-12 text-lg" style="">Legacy systems track metrics that don't matter. UNMASK tracks contribution in real-time, surfacing the true impact of every employee.</p>
-<div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-<div class="bg-background border-t-4 border-primary p-4 flex flex-col items-center justify-between text-center g2-badge-border h-32">
-<span class="font-label text-[8px] font-black uppercase text-secondary" style="">FALL 2024</span>
-<div class="font-headline text-[10px] font-black leading-tight uppercase px-2" style="">Momentum Leader</div>
-<div class="text-primary font-black text-[12px]" style="">G2</div>
-</div>
-<div class="bg-background border-t-4 border-primary/60 p-4 flex flex-col items-center justify-between text-center g2-badge-border h-32">
-<span class="font-label text-[8px] font-black uppercase text-secondary" style="">FALL 2024</span>
-<div class="font-headline text-[10px] font-black leading-tight uppercase px-2" style="">Users Recommend</div>
-<div class="text-primary font-black text-[12px]" style="">G2</div>
-</div>
-<div class="bg-background border-t-4 border-primary/40 p-4 flex flex-col items-center justify-between text-center g2-badge-border h-32">
-<span class="font-label text-[8px] font-black uppercase text-secondary" style="">FALL 2024</span>
-<div class="font-headline text-[10px] font-black leading-tight uppercase px-2" style="">Best Support</div>
-<div class="text-primary font-black text-[12px]" style="">G2</div>
-</div>
-<div class="bg-background border-t-4 border-primary/80 p-4 flex flex-col items-center justify-between text-center g2-badge-border h-32">
-<span class="font-label text-[8px] font-black uppercase text-secondary" style="">FALL 2024</span>
-<div class="font-headline text-[10px] font-black leading-tight uppercase px-2" style="">High Performer</div>
-<div class="text-primary font-black text-[12px]" style="">G2</div>
-</div>
-<div class="bg-background border-t-4 border-primary p-4 flex flex-col items-center justify-between text-center g2-badge-border h-32">
-<span class="font-label text-[8px] font-black uppercase text-secondary" style="">FALL 2024</span>
-<div class="font-headline text-[10px] font-black leading-tight uppercase px-2" style="">Best Est. ROI</div>
-<div class="text-primary font-black text-[12px]" style="">G2</div>
-</div>
-</div>
-</div>
-<div class="w-full lg:w-1/2 relative bg-surface-container-lowest border border-outline p-12 aspect-[4/3] grid-pattern">
-<!-- Momentum vs Satisfaction Grid Visualization -->
-<div class="absolute inset-12 border-l border-b border-outline flex flex-col">
-<!-- Grid Lines -->
-<div class="flex-1 grid grid-cols-4 grid-rows-4">
-<div class="border-r border-t border-outline/30"></div>
-<div class="border-r border-t border-outline/30"></div>
-<div class="border-r border-t border-outline/30"></div>
-<div class="border-t border-outline/30"></div>
-<div class="border-r border-t border-outline/30"></div>
-<div class="border-r border-t border-outline/30"></div>
-<div class="border-r border-t border-outline/30"></div>
-<div class="border-t border-outline/30"></div>
-<div class="border-r border-t border-outline/30"></div>
-<div class="border-r border-t border-outline/30"></div>
-<div class="border-r border-t border-outline/30"></div>
-<div class="border-t border-outline/30"></div>
-<div class="border-r border-t border-outline/30"></div>
-<div class="border-r border-t border-outline/30"></div>
-<div class="border-r border-t border-outline/30"></div>
-<div class="border-t border-outline/30"></div>
-</div>
-</div>
-<!-- Plot Points -->
-<div class="relative w-full h-full">
-<div class="absolute -bottom-8 left-1/2 -translate-x-1/2 font-label text-[10px] uppercase tracking-widest text-secondary font-bold" style="">Satisfaction</div>
-<div class="absolute -right-12 top-1/2 -translate-y-1/2 rotate-90 font-label text-[10px] uppercase tracking-widest text-secondary font-bold whitespace-nowrap" style="">Momentum Score</div>
-<div class="absolute top-[10%] right-[10%] w-16 h-16 bg-primary flex flex-col items-center justify-center industrial-glow animate-pulse">
-<span class="text-white font-black text-[10px] tracking-tighter" style="">UNMASK</span>
-</div>
-<div class="absolute top-[60%] left-[20%] w-14 h-14 bg-surface border border-outline flex items-center justify-center opacity-70">
-<span class="font-label font-bold text-[8px] text-center px-1" style="">WORKLYTICS</span>
-</div>
-<div class="absolute bottom-[20%] right-[40%] w-14 h-14 bg-surface border border-outline flex items-center justify-center opacity-70">
-<span class="font-label font-bold text-[8px] text-center px-1" style="">VISIER</span>
-</div>
-<div class="absolute top-[45%] right-[35%] w-14 h-14 bg-surface border border-outline flex items-center justify-center opacity-70">
-<span class="font-label font-bold text-[8px] text-center px-1" style="">LATTICE</span>
-</div>
-<div class="absolute bottom-[35%] left-[15%] w-14 h-14 bg-surface border border-outline flex items-center justify-center opacity-50">
-<span class="font-label font-bold text-[8px] text-center px-1" style="">MICROSOFT VIVA</span>
-</div>
-</div>
-<div class="absolute top-6 left-6 flex items-center gap-2">
-<div class="w-2 h-2 rounded-full bg-primary"></div>
-<span class="font-label text-[8px] uppercase tracking-widest text-primary font-bold" style="">G2_MARKET_MAP_LIVE</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- How It Works Section -->
-<section class="py-24 px-6 md:px-12 bg-surface">
-<div class="grid md:grid-cols-3 gap-0">
-<!-- Step 1 -->
-<div class="border border-outline p-16 hover:bg-surface-container-high transition-all group relative overflow-hidden">
-<span class="font-label text-primary text-6xl font-black block mb-10 opacity-40 group-hover:opacity-100 transition-opacity" style="">01</span>
-<h3 class="font-headline text-3xl font-black mb-6 uppercase tracking-tight" style="">CONNECT</h3>
-<p class="text-secondary text-lg leading-relaxed mb-12" style="">Integrate directly with your entire tech stack. We ingest signals from the tools your teams use daily.</p>
-<div class="grid grid-cols-3 gap-y-10 gap-x-6 opacity-40 group-hover:opacity-100 transition-opacity">
-<div class="flex flex-col items-center gap-2">
-<span class="material-symbols-outlined text-2xl" style="">source</span>
-<span class="font-label text-[10px] uppercase tracking-widest font-bold" style="">GitHub</span>
-</div>
-<div class="flex flex-col items-center gap-2">
-<span class="material-symbols-outlined text-2xl" style="">assignment</span>
-<span class="font-label text-[10px] uppercase tracking-widest font-bold" style="">Jira</span>
-</div>
-<div class="flex flex-col items-center gap-2">
-<span class="material-symbols-outlined text-2xl" style="">chat</span>
-<span class="font-label text-[10px] uppercase tracking-widest font-bold" style="">Slack</span>
-</div>
-<div class="flex flex-col items-center gap-2 text-primary">
-<span class="material-symbols-outlined text-2xl" style="">videocam</span>
-<span class="font-label text-[10px] uppercase tracking-widest font-bold" style="">Zoom</span>
-</div>
-<div class="flex flex-col items-center gap-2 text-primary">
-<span class="material-symbols-outlined text-2xl" style="">groups</span>
-<span class="font-label text-[10px] uppercase tracking-widest font-bold" style="">Teams</span>
-</div>
-<div class="flex flex-col items-center gap-2 text-primary">
-<span class="material-symbols-outlined text-2xl" style="">mail</span>
-<span class="font-label text-[10px] uppercase tracking-widest font-bold" style="">Outlook</span>
-</div>
-</div>
-</div>
-<!-- Step 2 -->
-<div class="border border-outline p-16 bg-surface-container-lowest relative">
-<div class="absolute top-0 left-0 w-full h-1.5 bg-primary shadow-[0_0_15px_rgba(255,77,0,0.5)]"></div>
-<span class="font-label text-primary text-6xl font-black block mb-10" style="">02</span>
-<h3 class="font-headline text-3xl font-black mb-6 uppercase tracking-tight" style="">30-DAY AUDIT</h3>
-<p class="text-secondary text-lg leading-relaxed" style="">We ingest your history to baseline your organizational DNA. We identify hidden high-performers across all departments and detect silent attrition risks early.</p>
-</div>
-<!-- Step 3 -->
-<div class="border border-outline p-16 hover:bg-surface-container-high transition-all group">
-<span class="font-label text-primary text-6xl font-black block mb-10 opacity-40 group-hover:opacity-100 transition-opacity" style="">03</span>
-<h3 class="font-headline text-3xl font-black mb-6 uppercase tracking-tight" style="">ONGOING ALERTS</h3>
-<p class="text-secondary text-lg leading-relaxed" style="">Real-time contribution shift alerts. Get notified when your highest +/- assets across the company show signs of disengagement—long before it impacts the bottom line.</p>
-</div>
-</div>
-</section>
-<!-- ROI Calculus Section -->
-<section class="py-40 px-6 md:px-12 bg-background overflow-hidden">
-<div class="max-w-6xl mx-auto">
-<div class="flex flex-col items-center text-center">
-<span class="font-label text-primary text-sm tracking-[0.4em] uppercase mb-12 block font-black" style="">ECONOMIC IMPACT</span>
-<div class="max-w-5xl px-12 py-24 border-y-2 border-outline relative">
-<span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background px-8">
-<span class="material-symbols-outlined text-primary text-6xl" style='font-variation-settings: "FILL" 1;'>format_quote</span>
-</span>
-<p class="font-headline text-4xl md:text-6xl font-black text-on-background tracking-tighter leading-[1.1] mb-16 uppercase italic" style="">
-                        "We realized that preventing just one departure every three years pays for the entire system. In reality, it saved us three in the first six months."
-                    </p>
-<div class="flex flex-col items-center">
-<div class="flex items-center gap-10">
-<div class="h-px w-16 bg-primary"></div>
-<div class="flex flex-col items-center">
-<div class="font-headline text-3xl font-black tracking-tighter text-on-background uppercase mb-1" style="">REVOLUT</div>
-<p class="font-label text-xs uppercase tracking-[0.3em] font-bold text-secondary" style="">FinTech Unicorn // CTO</p>
-</div>
-<div class="h-px w-16 bg-primary"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Founder's Letter -->
-<section class="py-32 px-6 md:px-12 bg-surface border-y border-outline">
-<div class="max-w-3xl mx-auto">
-<div class="mb-16 text-center">
-<div class="w-14 h-14 bg-primary mx-auto mb-8 shadow-[0_0_20px_rgba(255,77,0,0.3)]"></div>
-<h2 class="font-headline text-4xl font-black uppercase tracking-[0.2em]" style="">Internal Memorandum</h2>
-<p class="font-label text-xs text-primary mt-3 tracking-[0.6em] font-black uppercase" style="">AUTH_LEVEL: FOUNDER</p>
-</div>
-<div class="prose prose-invert max-w-none font-body text-secondary text-lg leading-[1.8] space-y-8">
-<p class="" style="">
-                    The corporate world is dying from a lack of transparency. We have built systems that reward those who speak the loudest in meetings, those who create the most beautiful slide decks, and those who "look" busy while contributing negative value to the core product.
-                </p>
-<p class="" style="">
-                    We call them silent killers. They are the high-salaried staff who have checked out but remain on the payroll because no one has the data to challenge them. Conversely, we have "ghost performers"—the contributors who carry 80% of your production load but don't play the office politics game.
-                </p>
-<p class="" style="">
-                    UNMASK wasn't built to be a surveillance tool. It was built to be a truth engine for the whole organization. By applying professional basketball's +/- logic to business, we remove the bias, the favoritism, and the theater. 
-                </p>
-<p class="font-semibold text-on-surface" style="">
-                    It is time to see who is actually moving the needle. It is time to unmask the organization.
-                </p>
-</div>
-<div class="mt-20 flex flex-col items-start border-l-2 border-primary pl-8">
-<div class="font-headline text-3xl font-black text-on-background italic mb-2 tracking-tight" style="">Alex Sterling</div>
-<div class="font-label text-sm text-primary uppercase tracking-[0.3em] font-black" style="">Founder &amp; CEO // UNMASK</div>
-</div>
-</div>
-</section>
-<!-- Final CTA -->
-<section class="py-48 px-6 text-center bg-background relative overflow-hidden">
-<div class="absolute inset-0 opacity-20 grid-pattern pointer-events-none"></div>
-<div class="max-w-5xl mx-auto z-10 relative">
-<h2 class="text-6xl md:text-[9rem] font-headline font-black tracking-tighter mb-16 uppercase leading-[0.85] text-on-background" style="">
-                STOP PAYING FOR <br/><span class="text-primary" style="">THEATER.</span>
-</h2>
-<button class="bg-primary text-white px-20 py-10 text-2xl md:text-3xl font-black uppercase tracking-tighter industrial-glow hover:brightness-110 transition-all active:scale-95 shadow-[0_0_50px_rgba(255,77,0,0.3)]" style="">INITIATE SCAN</button>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-[#080808] flex flex-col md:flex-row justify-between items-center py-12 px-10 w-full border-t border-outline relative z-20">
-<div class="flex flex-col mb-8 md:mb-0">
-<div class="text-primary font-black font-label text-lg mb-1 tracking-tighter" style="">UNMASK</div>
-<div class="font-mono text-[10px] uppercase tracking-[0.2em] text-secondary/50 font-medium" style="">SYSTEM LOG: UNMASK_INIT_V2.0.0</div>
-</div>
-<div class="flex flex-wrap justify-center gap-x-12 gap-y-6 mb-8 md:mb-0">
-<a class="font-mono text-[11px] uppercase tracking-[0.2em] text-secondary hover:text-primary transition-colors font-bold" href="#" style="">Documentation</a>
-<a class="font-mono text-[11px] uppercase tracking-[0.2em] text-secondary hover:text-primary transition-colors font-bold" href="#" style="">System Status</a>
-<a class="font-mono text-[11px] uppercase tracking-[0.2em] text-secondary hover:text-primary transition-colors font-bold" href="#" style="">Security Protocol</a>
-</div>
-<div class="font-mono text-[11px] uppercase tracking-[0.2em] text-secondary/40 font-bold" style="">
-        © 2024 UNMASK_PROTOCOLS
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- HERO -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="relative flex flex-col items-center justify-center px-6 md:px-12 py-20 overflow-hidden grid-pattern">
+    <div class="max-w-4xl w-full z-10 text-center">
+
+      <!-- G2 SOCIAL PROOF -->
+      <div class="fade-up-1 inline-flex items-center gap-3 bg-surface border border-outline px-5 py-2.5 mb-8">
+        <div class="flex items-center gap-1">
+          <span class="text-primary text-sm" style="font-variation-settings:'FILL' 1;" class="material-symbols-outlined">★</span>
+          <span class="text-primary text-sm">★★★★★</span>
+        </div>
+        <span class="text-on-surface font-black text-sm">4.9</span>
+        <div class="w-px h-4 bg-outline"></div>
+        <span class="text-secondary text-xs font-label uppercase tracking-widest">3,000+ reviews on</span>
+        <span class="text-on-surface font-black text-sm tracking-tight">G2</span>
+      </div>
+
+      <h1 class="fade-up-2 text-[2.4rem] md:text-[3.8rem] font-black leading-[0.92] tracking-tighter text-on-background mb-6 font-headline uppercase">
+        UNMASK<br/>
+        <span class="text-primary">YOUR ORG.</span>
+      </h1>
+
+      <p class="fade-up-3 text-sm md:text-base text-secondary max-w-xl mx-auto mb-10 leading-relaxed font-light">
+        You are overpaying people who should be fired and underpaying the ones carrying everyone else. You just don't know which is which.
+      </p>
+
+      <div class="fade-up-4 flex flex-col md:flex-row gap-3 justify-center mb-14">
+        <button class="bg-primary text-white px-10 py-4 text-base font-black uppercase tracking-tighter industrial-glow hover:brightness-110 transition-all flex items-center justify-center gap-2">
+          RUN YOUR FIRST SCAN
+          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </button>
+        <button class="border border-outline text-on-surface px-8 py-4 text-sm font-label uppercase tracking-widest hover:bg-surface transition-colors flex items-center justify-center gap-2">
+          SEE A LIVE DEMO <span class="material-symbols-outlined text-secondary text-lg">play_circle</span>
+        </button>
+      </div>
+
+      <!-- TRUST BAR -->
+      <div class="flex flex-col gap-4 border-t border-outline pt-10">
+        <span class="font-label text-[10px] uppercase tracking-[0.3em] text-secondary/50 font-bold">Trusted by fast-growing teams at</span>
+        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 opacity-40">
+          <span class="font-headline text-base font-black tracking-tighter text-on-background" style="filter: grayscale(1) brightness(2)">STRIPE</span>
+          <span class="font-headline text-base font-black tracking-tighter text-on-background" style="filter: grayscale(1) brightness(2)">PLAID</span>
+          <span class="font-headline text-base font-black tracking-tighter text-on-background" style="filter: grayscale(1) brightness(2)">RIPPLING</span>
+          <span class="font-headline text-base font-black tracking-tighter text-on-background" style="filter: grayscale(1) brightness(2)">GUSTO</span>
+          <span class="font-headline text-base font-black tracking-tighter text-on-background" style="filter: grayscale(1) brightness(2)">RAMP</span>
+          <span class="font-headline text-base font-black tracking-tighter text-on-background" style="filter: grayscale(1) brightness(2)">BREX</span>
+          <span class="font-headline text-base font-black tracking-tighter text-on-background" style="filter: grayscale(1) brightness(2)">DEEL</span>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- DASHBOARD / REPORT CARD SECTION -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="py-20 px-6 md:px-12 bg-surface-container-low">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-12 border-l-4 border-primary pl-8">
+        <span class="font-label text-primary text-sm tracking-[0.3em] uppercase mb-3 block font-bold">Live Report Cards</span>
+        <h2 class="text-4xl md:text-6xl font-headline font-black tracking-tighter uppercase leading-none">EVERY EMPLOYEE.<br/>ONE CLEAR GRADE.</h2>
+        <p class="text-secondary mt-4 text-base max-w-2xl">Instead of biased annual performance reviews or employee self-reported surveys, AI watches your employees 24/7 and generates a grade.</p>
+      </div>
+
+      <div class="bg-[#111111] border border-outline shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden">
+        <!-- Header -->
+        <div class="bg-surface border-b border-outline flex items-center justify-between px-6 py-4">
+          <div class="flex items-center gap-6">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
+              <span class="font-label text-[10px] text-on-surface/80 uppercase tracking-[0.2em] font-bold">LIVE SCORES</span>
+            </div>
+            <span class="font-label text-[10px] text-secondary uppercase tracking-[0.1em]">Acme Corp // 47 employees tracked</span>
+          </div>
+          <span class="font-label text-[10px] text-primary uppercase tracking-[0.2em] font-bold cursor-pointer">VIEW ALL →</span>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-outline font-label text-[11px] uppercase tracking-[0.2em] text-secondary bg-surface/30">
+                <th class="px-8 py-5 font-bold">Employee</th>
+                <th class="px-8 py-5 font-bold">Role</th>
+                <th class="px-8 py-5 font-bold">What AI Measured</th>
+                <th class="px-8 py-5 text-center font-bold">Grade</th>
+                <th class="px-8 py-5 font-bold">Trend</th>
+              </tr>
+            </thead>
+            <tbody class="font-label">
+              <tr class="border-b border-outline/50 dashboard-row transition-all group">
+                <td class="px-8 py-6">
+                  <div class="flex items-center gap-4">
+                    <div class="w-9 h-9 bg-primary/10 border border-primary/30 flex items-center justify-center font-black text-primary text-xs">A.S.</div>
+                    <div>
+                      <div class="text-on-surface font-black uppercase text-sm">A. Sterling</div>
+                      <div class="text-[10px] text-secondary font-mono">Head of Sales</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-8 py-6 text-secondary text-xs uppercase tracking-tight">Sales</td>
+                <td class="px-8 py-6 text-secondary text-xs">14 deals closed · 98% follow-up rate · fastest response time on team</td>
+                <td class="px-8 py-6 text-center">
+                  <span class="text-primary text-4xl font-black">A+</span>
+                </td>
+                <td class="px-8 py-6 text-green-400 font-bold text-sm">↑ Up from A</td>
+              </tr>
+              <tr class="border-b border-outline/50 dashboard-row transition-all group">
+                <td class="px-8 py-6">
+                  <div class="flex items-center gap-4">
+                    <div class="w-9 h-9 bg-surface border border-outline flex items-center justify-center font-black text-on-surface text-xs">J.M.</div>
+                    <div>
+                      <div class="text-on-surface font-black uppercase text-sm">J. Miller</div>
+                      <div class="text-[10px] text-secondary font-mono">Sr. Engineer</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-8 py-6 text-secondary text-xs uppercase tracking-tight">Engineering</td>
+                <td class="px-8 py-6 text-secondary text-xs">847 lines reviewed · 22 PRs merged · zero critical bugs this quarter</td>
+                <td class="px-8 py-6 text-center">
+                  <span class="text-on-surface text-4xl font-black">A</span>
+                </td>
+                <td class="px-8 py-6 text-secondary font-bold text-sm">→ Steady</td>
+              </tr>
+              <tr class="border-b border-outline/50 dashboard-row transition-all group">
+                <td class="px-8 py-6">
+                  <div class="flex items-center gap-4">
+                    <div class="w-9 h-9 bg-red-500/10 border border-red-500/30 flex items-center justify-center font-black text-red-400 text-xs">S.K.</div>
+                    <div>
+                      <div class="text-on-surface font-black uppercase text-sm">S. Kapoor</div>
+                      <div class="text-[10px] text-secondary font-mono">Customer Success</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-8 py-6 text-secondary text-xs uppercase tracking-tight">CS</td>
+                <td class="px-8 py-6 text-secondary text-xs">Response time up 4x · 3 accounts flagged at-risk · output down 60% this month</td>
+                <td class="px-8 py-6 text-center">
+                  <span class="text-red-400 text-4xl font-black">C−</span>
+                </td>
+                <td class="px-8 py-6 text-red-400 font-bold text-sm">↓ Dropping fast</td>
+              </tr>
+              <tr class="border-b border-outline/50 dashboard-row transition-all group">
+                <td class="px-8 py-6">
+                  <div class="flex items-center gap-4">
+                    <div class="w-9 h-9 bg-surface border border-outline flex items-center justify-center font-black text-on-surface text-xs">M.T.</div>
+                    <div>
+                      <div class="text-on-surface font-black uppercase text-sm">M. Thorne</div>
+                      <div class="text-[10px] text-secondary font-mono">Marketing</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-8 py-6 text-secondary text-xs uppercase tracking-tight">Marketing</td>
+                <td class="px-8 py-6 text-secondary text-xs">6 campaigns shipped · 3.2x ROI on paid · highest content output on team</td>
+                <td class="px-8 py-6 text-center">
+                  <span class="text-on-surface text-4xl font-black">B+</span>
+                </td>
+                <td class="px-8 py-6 text-green-400 font-bold text-sm">↑ Rising</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="px-8 py-4 border-t border-outline bg-background/50">
+          <p class="font-label text-[10px] text-secondary uppercase tracking-[0.1em]">* Grades are generated by AI using real output data from Slack, GitHub, Jira, Salesforce, and email. No manager input. No surveys.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- WHAT IS THIS — NEW CATEGORY EXPLAINER -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="py-28 px-6 md:px-12 bg-surface border-y border-outline">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="font-label text-primary text-[0.65rem] tracking-[0.4em] uppercase font-black block mb-6">What is this, exactly?</span>
+          <h2 class="text-4xl md:text-6xl font-headline font-black tracking-tighter uppercase leading-[1.05] mb-8">
+            A BRAND NEW<br/><span class="text-primary">CATEGORY OF SOFTWARE.</span>
+          </h2>
+          <div class="space-y-6 text-secondary text-lg leading-relaxed">
+            <p>You already have tools that help you <em class="text-on-surface not-italic font-semibold">hire</em> people (LinkedIn, Greenhouse). Tools that help you <em class="text-on-surface not-italic font-semibold">pay</em> people (Rippling, Gusto). Tools that help you <em class="text-on-surface not-italic font-semibold">review</em> people (Lattice, Workday).</p>
+            <p>But none of those tools tell you what you actually need to know:</p>
+            <p class="text-on-surface font-bold text-xl border-l-4 border-primary pl-6">
+              Who is actually doing the work?
+            </p>
+            <p>UNMASK is the first <strong class="text-on-surface">Employee Intelligence</strong> platform. We don't ask managers for their opinions. We look at the real work and give every employee an AI report card based on what they actually produced.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 gap-4">
+          <div class="border border-outline p-6 bg-background opacity-50">
+            <div class="flex justify-between items-start mb-3">
+              <span class="font-label text-[10px] uppercase tracking-widest text-secondary font-bold">HR Tools (Before)</span>
+              <span class="text-red-400 font-label text-[10px] font-bold">❌ OLD WAY</span>
+            </div>
+            <p class="text-secondary text-sm leading-relaxed">Manager fills out a form once a year. Says Sarah is a "team player." Sarah gets promoted. Sarah is a mouse mover who has been coasting for two years on your dime.</p>
+          </div>
+          <div class="border-2 border-primary p-6 bg-background relative report-card-border">
+            <div class="absolute -top-3 left-6 bg-primary px-3 py-1">
+              <span class="font-label text-[9px] uppercase tracking-widest text-white font-black">✓ UNMASK WAY</span>
+            </div>
+            <p class="text-on-surface text-sm leading-relaxed mt-2">AI reads 30 days of real output from every tool your team uses. Sarah gets a <strong class="text-primary">C+</strong>. Marcus, who never spoke up in meetings but closed 14 deals, gets an <strong class="text-primary">A</strong>. Now you know.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- THE PROBLEM -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="py-32 px-6 md:px-12 bg-background">
+    <div class="max-w-5xl mx-auto text-center">
+      <span class="font-label text-primary text-[0.65rem] tracking-[0.4em] uppercase font-black block mb-8">The Problem</span>
+      <h2 class="text-5xl md:text-8xl font-headline font-black tracking-tighter uppercase leading-[0.9] mb-12">
+        YOU'RE PROBABLY<br/>PAYING THE WRONG<br/><span class="text-primary">PEOPLE.</span>
+      </h2>
+      <div class="grid md:grid-cols-3 gap-0 mt-16 text-left">
+        <div class="border border-outline p-10">
+          <div class="text-5xl font-black text-primary mb-4">73%</div>
+          <p class="text-secondary leading-relaxed">of managers admit they cannot accurately rank their team's performance without bias.</p>
+        </div>
+        <div class="border border-outline border-l-0 p-10 bg-surface">
+          <div class="text-5xl font-black text-primary mb-4">$1M+</div>
+          <p class="text-secondary leading-relaxed">is the average cost of losing a senior employee. Recruiting, training, and lost output combined.</p>
+        </div>
+        <div class="border border-outline border-l-0 p-10">
+          <div class="text-5xl font-black text-primary mb-4">1 in 3</div>
+          <p class="text-secondary leading-relaxed">employees are actively disengaged right now. You don't know which ones. UNMASK does.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PAUL GRAHAM QUOTE -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="py-24 px-6 md:px-12 bg-background border-t border-outline">
+    <div class="max-w-4xl mx-auto">
+      <span class="font-label text-primary text-[0.65rem] tracking-[0.4em] uppercase font-black block mb-10">The Problem</span>
+      <div class="border-l-4 border-primary pl-10 mb-10">
+        <p class="text-on-surface text-2xl md:text-3xl font-light leading-relaxed mb-6">
+          "The single biggest problem afflicting large companies is the difficulty of assigning a value to each person's work. For the most part they punt. Salespeople are an exception — easy to measure how much revenue they generate. Everyone else? The company has no way of measuring the value of their work."
+        </p>
+        <p class="text-secondary font-label text-sm uppercase tracking-widest">Paul Graham</p>
+      </div>
+      <div class="border-t border-outline pt-8">
+        <p class="text-on-surface font-black text-xl md:text-2xl">That was written in 2004.</p>
+        <p class="text-primary font-black text-xl md:text-2xl">Nothing has changed. Until now.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- HOW IT WORKS -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="py-24 px-6 md:px-12 bg-background border-y border-outline">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="font-label text-primary text-[0.65rem] tracking-[0.4em] uppercase font-black block mb-4">How It Works</span>
+        <h2 class="text-4xl md:text-6xl font-headline font-black tracking-tighter uppercase">THREE STEPS.<br/>TOTAL CLARITY.</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-0">
+        <div class="border border-outline p-12 hover:bg-surface-container-high transition-all group">
+          <span class="font-label text-primary text-5xl font-black block mb-8 opacity-40 group-hover:opacity-100 transition-opacity">01</span>
+          <h3 class="font-headline text-2xl font-black mb-4 uppercase">Connect Your Tools</h3>
+          <p class="text-secondary leading-relaxed mb-8">Takes 10 minutes. Plug in Slack, GitHub, Jira, Salesforce — whatever your team already uses. We do the rest. No new workflows for your employees.</p>
+          <div class="grid grid-cols-3 gap-6 opacity-40 group-hover:opacity-100 transition-opacity">
+            <div class="flex flex-col items-center gap-1"><span class="material-symbols-outlined text-xl">source</span><span class="font-label text-[9px] uppercase tracking-widest font-bold">GitHub</span></div>
+            <div class="flex flex-col items-center gap-1"><span class="material-symbols-outlined text-xl">assignment</span><span class="font-label text-[9px] uppercase tracking-widest font-bold">Jira</span></div>
+            <div class="flex flex-col items-center gap-1"><span class="material-symbols-outlined text-xl">chat</span><span class="font-label text-[9px] uppercase tracking-widest font-bold">Slack</span></div>
+          </div>
+        </div>
+        <div class="border border-outline p-12 bg-surface-container-lowest relative">
+          <div class="absolute top-0 left-0 w-full h-1.5 bg-primary shadow-[0_0_15px_rgba(255,77,0,0.5)]"></div>
+          <span class="font-label text-primary text-5xl font-black block mb-8">02</span>
+          <h3 class="font-headline text-2xl font-black mb-4 uppercase">AI Reads the Work</h3>
+          <p class="text-secondary leading-relaxed">Our AI spends 30 days reading real output. Not opinions. Not self-assessments. Actual work. Tickets closed. Deals moved. Code shipped. Emails answered. Then it grades everyone — fairly, consistently, without politics.</p>
+        </div>
+        <div class="border border-outline p-12 hover:bg-surface-container-high transition-all group">
+          <span class="font-label text-primary text-5xl font-black block mb-8 opacity-40 group-hover:opacity-100 transition-opacity">03</span>
+          <h3 class="font-headline text-2xl font-black mb-4 uppercase">Get Alerts Before It's Too Late</h3>
+          <p class="text-secondary leading-relaxed">When an A-player's grade starts slipping, you get an alert immediately. Not at their exit interview. Not when a client churns. Right now, while you can still do something about it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- SOCIAL PROOF / TESTIMONIAL -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="py-40 px-6 md:px-12 bg-surface">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-20">
+        <span class="font-label text-primary text-[0.65rem] tracking-[0.4em] uppercase font-black block mb-4">Real Results</span>
+        <h2 class="text-4xl md:text-6xl font-headline font-black tracking-tighter uppercase">What Customers Say</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="border border-outline p-10 bg-background">
+          <p class="text-on-surface text-xl leading-relaxed mb-8 font-light">"We found out our top performer was about to quit. UNMASK flagged it two weeks before she said anything. We promoted her. She's still here."</p>
+          <div class="flex items-center gap-4 border-t border-outline pt-6">
+            <div class="w-10 h-10 bg-primary/10 border border-primary/30 flex items-center justify-center font-black text-primary text-xs">R</div>
+            <div>
+              <div class="font-black uppercase text-sm text-on-surface">REVOLUT</div>
+              <div class="font-label text-[10px] text-secondary uppercase tracking-widest">CTO</div>
+            </div>
+          </div>
+        </div>
+        <div class="border border-outline p-10 bg-background">
+          <p class="text-on-surface text-xl leading-relaxed mb-8 font-light">"I thought I knew my team. Turns out the person I thought was my best engineer was coasting. The one I almost let go was carrying the whole product."</p>
+          <div class="flex items-center gap-4 border-t border-outline pt-6">
+            <div class="w-10 h-10 bg-surface border border-outline flex items-center justify-center font-black text-on-surface text-xs">S</div>
+            <div>
+              <div class="font-black uppercase text-sm text-on-surface">STRIPE</div>
+              <div class="font-label text-[10px] text-secondary uppercase tracking-widest">VP Engineering</div>
+            </div>
+          </div>
+        </div>
+        <div class="border border-outline p-10 bg-background md:col-span-2">
+          <p class="text-on-surface text-2xl md:text-3xl leading-relaxed mb-8 font-light text-center italic">"Losing one great employee costs more than UNMASK costs for three years. In our first six months, we kept four. Do the math."</p>
+          <div class="flex items-center justify-center gap-4 border-t border-outline pt-6">
+            <div class="h-px w-12 bg-primary"></div>
+            <div class="text-center">
+              <div class="font-black uppercase text-sm text-on-surface">RAMP</div>
+              <div class="font-label text-[10px] text-secondary uppercase tracking-widest">Chief People Officer</div>
+            </div>
+            <div class="h-px w-12 bg-primary"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- FOUNDER LETTER -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="py-32 px-6 md:px-12 bg-background border-y border-outline">
+    <div class="max-w-2xl mx-auto">
+
+      <!-- Letter paper effect -->
+      <div class="bg-[#f7f4ef] text-[#1a1a1a] p-10 md:p-16 shadow-[0_8px_40px_rgba(0,0,0,0.4)]" style="font-family: 'Georgia', serif;">
+
+        <!-- Letterhead -->
+        <div class="flex justify-between items-start mb-10 pb-8 border-b border-[#d0ccc4]">
+          <div>
+            <div class="text-[#FF4D00] font-black tracking-tighter text-xl" style="font-family: 'Inter Tight', sans-serif;">UNMASK</div>
+            <div class="text-[#999] text-xs mt-1" style="font-family: 'Space Grotesk', monospace;">Employee Intelligence Platform</div>
+          </div>
+          <div class="text-right text-[#999] text-sm">
+            <div>March 2025</div>
+          </div>
+        </div>
+
+        <!-- Salutation -->
+        <p class="text-[#1a1a1a] text-base mb-8 leading-relaxed">To whoever is running a team right now,</p>
+
+        <!-- Body -->
+        <div class="space-y-5 text-[#2a2a2a] text-base leading-[1.9]" style="font-family: 'Georgia', serif;">
+          <p>I've started companies of 3 people and worked at ones with thousands.</p>
+          <p>The biggest problem at every single one was the same:</p>
+          <p>We always overpaid employees who should have been fired — and underpaid the silent killers who were carrying everyone else. And nobody could prove it either way.</p>
+          <p>So you walk around with three questions you can't answer:</p>
+
+          <div class="my-6 space-y-2 pl-6 border-l-2 border-[#d0ccc4] text-[#444] italic">
+            <p>Is my highest-paid engineer actually my best one?</p>
+            <p>Did the person who quit last month carry three others — and I had no idea?</p>
+            <p>Am I about to lose someone and only find out when they hand in their notice?</p>
+          </div>
+
+          <p>You're making million-dollar decisions about people using gut feel and once-a-year reviews that everyone knows are political.</p>
+          <p>That's why we built UNMASK. AI watches what your team actually does every day — in the tools they already use — and gives every employee a clear, honest grade.</p>
+          <p>No surveys. No manager opinions. No new tools for your team.</p>
+          <p>Just the truth about who is carrying your company — and who isn't.</p>
+        </div>
+
+        <!-- Sign-off -->
+        <div class="mt-12">
+          <p class="text-[#2a2a2a] text-base mb-6">Sincerely,</p>
+          <!-- Handwritten signature SVG -->
+          <svg viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg" style="width:200px; height:50px; margin-bottom: 8px;">
+            <path d="M 10 40 C 15 25, 20 20, 28 30 C 32 35, 30 42, 35 38 C 40 34, 38 25, 45 28 C 50 30, 48 40, 53 36" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 58 28 C 63 22, 70 20, 75 28 C 78 33, 74 40, 80 36 C 85 32, 83 24, 90 26 C 95 28, 92 36, 98 33 C 103 30, 100 22, 107 24" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 53 36 C 55 44, 58 48, 62 44" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <path d="M 112 24 C 118 18, 126 22, 124 30 C 122 38, 114 40, 118 44 C 121 47, 128 44, 132 40" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 136 22 C 140 30, 138 36, 143 32 C 148 28, 145 20, 152 22 C 157 24, 154 34, 160 30 C 164 27, 162 20, 168 22 C 173 24, 170 34, 176 30 C 180 27, 185 30, 188 36 C 190 40, 188 46, 192 44" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 192 44 C 200 50, 210 46, 215 38 C 218 32, 215 26, 220 30" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div class="mb-1">
+            <span class="text-[#1a1a1a] text-2xl" style="font-family: 'Georgia', serif; font-style: italic;">Sam Farber</span>
+          </div>
+          <p class="text-[#999] mt-1" style="font-family: 'Space Grotesk', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;">Founder & CEO, UNMASK</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- FINAL CTA -->
+  <!-- ═══════════════════════════════════════ -->
+  <section class="py-48 px-6 text-center bg-background relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20 grid-pattern pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto z-10 relative">
+      <span class="font-label text-primary text-[0.65rem] tracking-[0.5em] uppercase font-black block mb-8">Stop Guessing. Start Knowing.</span>
+      <h2 class="text-4xl md:text-6xl font-headline font-black tracking-tighter mb-8 uppercase leading-[0.9] text-on-background">
+        FIND OUT WHO'S<br/>ACTUALLY DOING<br/><span class="text-primary">THE WORK.</span>
+      </h2>
+      <p class="text-secondary text-xl mb-14 max-w-xl mx-auto">Run your first scan in under 10 minutes. No setup. No surveys. Just answers.</p>
+      <button class="bg-primary text-white px-20 py-8 text-2xl font-black uppercase tracking-tighter industrial-glow hover:brightness-110 transition-all active:scale-95 shadow-[0_0_50px_rgba(255,77,0,0.3)]">
+        RUN YOUR FIRST SCAN →
+      </button>
+      <p class="text-secondary/40 font-label text-xs uppercase tracking-widest mt-6">Free for 30 days. No credit card required.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-[#080808] flex flex-col md:flex-row justify-between items-center py-10 px-10 w-full border-t border-outline">
+  <div class="flex flex-col mb-6 md:mb-0">
+    <div class="text-primary font-black font-label text-lg mb-1 tracking-tighter">UNMASK</div>
+    <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-secondary/40">Employee Intelligence Platform</div>
+  </div>
+  <div class="flex flex-wrap justify-center gap-x-10 gap-y-4 mb-6 md:mb-0">
+    <a class="font-mono text-[11px] uppercase tracking-[0.2em] text-secondary hover:text-primary transition-colors font-bold" href="#">How It Works</a>
+    <a class="font-mono text-[11px] uppercase tracking-[0.2em] text-secondary hover:text-primary transition-colors font-bold" href="#">Pricing</a>
+    <a class="font-mono text-[11px] uppercase tracking-[0.2em] text-secondary hover:text-primary transition-colors font-bold" href="#">Privacy</a>
+    <a class="font-mono text-[11px] uppercase tracking-[0.2em] text-secondary hover:text-primary transition-colors font-bold" href="#">Security</a>
+  </div>
+  <div class="font-mono text-[11px] uppercase tracking-[0.2em] text-secondary/30 font-bold">© 2024 UNMASK</div>
 </footer>
-</body></html>
+
+</body>
+</html>
