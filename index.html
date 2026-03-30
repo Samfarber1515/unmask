@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>[unmask] — People Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -125,8 +125,8 @@ h3{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:15px;color:v
 .big-num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:48px;line-height:1;margin-bottom:4px}
 
 /* ── STEPS ── */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)}
-.step{background:var(--code);padding:36px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);min-width:0}
+.step{background:var(--code);padding:36px;min-width:0;word-break:break-word}
 .step-num{font-family:'JetBrains Mono',monospace;font-size:36px;font-weight:700;color:var(--ember);opacity:0.3;margin-bottom:20px;letter-spacing:-0.02em}
 .step:hover .step-num{opacity:1}
 .step p{font-size:13px;color:var(--mid);line-height:1.7;margin-top:8px}
@@ -183,6 +183,38 @@ footer{border-top:1px solid var(--rule);padding:32px clamp(20px,5vw,72px);displa
 .px-page{padding-left:clamp(20px,5vw,72px);padding-right:clamp(20px,5vw,72px)}
 
 @keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:768px){
+  nav{padding:0 16px}
+  .nav-links{display:none}
+  .hero{padding:80px 20px 48px;min-height:auto}
+  h1{font-size:clamp(44px,12vw,72px)}
+  .cta-row{flex-direction:column;width:100%}
+  .btn-primary,.btn-ghost{width:100%;justify-content:center;border-left:1px solid var(--rule)}
+  .trust-bar{margin-top:40px}
+  .trust-logos{gap:20px}
+  .py-96{padding-top:64px;padding-bottom:64px}
+  .px-page{padding-left:20px;padding-right:20px}
+  .container{padding:0}
+  .steps{grid-template-columns:1fr}
+  .moat-grid{grid-template-columns:1fr}
+  .case-grid{grid-template-columns:1fr}
+  .quote-grid{grid-template-columns:1fr}
+  .price-grid{grid-template-columns:1fr}
+  div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:32px!important}
+  div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important}
+  div[style*="grid-template-columns:repeat(2,1fr)"]{grid-template-columns:1fr!important}
+  div[style*="grid-template-columns:auto 1fr"]{grid-template-columns:1fr!important}
+  .big-num{font-size:40px}
+  .letter{padding:32px 24px}
+  .moat-cell{padding:20px}
+  .step{padding:24px}
+  div[style*="font-size:clamp(72px"]{font-size:56px!important}
+  .final-cta{padding:64px 20px}
+  .final-h{font-size:clamp(32px,10vw,56px)}
+  footer{flex-direction:column;gap:20px;text-align:center}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:16px}
+}
 </style>
 </head>
 <body>
@@ -202,11 +234,13 @@ footer{border-top:1px solid var(--rule);padding:32px clamp(20px,5vw,72px);displa
 <section class="hero">
   <!-- G2 badge -->
   <div style="display:inline-flex;align-items:center;gap:12px;background:var(--code);border:1px solid var(--rule);padding:9px 18px;margin-bottom:44px;opacity:0;animation:up 0.4s ease 0.1s forwards">
-    <span style="color:#E8521A;font-size:13px">★★★★★</span>
+    <span style="color:#FF4D00;font-size:14px;letter-spacing:1px">★★★★★</span>
     <span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:var(--paper)">4.9</span>
     <div style="width:1px;height:16px;background:var(--rule)"></div>
-    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--bone)">3,000+ reviews on</span>
-    <span style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;color:var(--paper)">G2</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--bone)">3,000+ reviews on</span>
+    <div style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <svg viewBox="-36.72 -19.24 748.01 780.17" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><g fill="#ff492c"><path d="m501.22 521c26.9 46.68 53.5 92.83 80.08 138.93-117.7 90.11-300.82 101-436.38-2.77-156-119.51-181.64-323.43-98.12-470.22 96.06-168.84 275.82-206.18 391.56-178.8-3.13 6.8-72.45 150.61-72.45 150.61s-5.48.36-8.58.42c-34.21 1.45-59.69 9.41-87 23.53a206.93 206.93 0 0 0 -109.84 159.76 201.71 201.71 0 0 0 13.68 100.29c11 26.82 26.56 50.64 47.42 70.75 32 30.88 70.08 50 114.22 56.33 41.8 6 82 .06 119.67-18.87 14.13-7.09 26.15-14.92 40.2-25.66 1.79-1.16 3.38-2.63 5.54-4.3z"/><path d="m501.48 111.61c-6.83-6.72-13.16-12.92-19.46-19.16-3.76-3.72-7.38-7.59-11.23-11.22-1.38-1.31-3-3.1-3-3.1s1.31-2.78 1.87-3.92c7.37-14.79 18.92-25.6 32.62-34.2a90.65 90.65 0 0 1 50.72-14.01c22.93.45 44.25 6.16 62.24 21.54 13.28 11.35 20.09 25.75 21.29 42.94 2 29-10 51.21-33.83 66.71-14 9.12-29.1 16.17-44.24 24.52-8.35 4.61-15.49 8.66-23.65 17-7.18 8.37-7.53 16.26-7.53 16.26l108.47-.14v48.31h-167.43v-4.67c-.64-23.74 2.13-46.08 13-67.64 10-19.78 25.54-34.26 44.21-45.41 14.38-8.59 29.52-15.9 43.93-24.45 8.89-5.27 15.17-13 15.12-24.21 0-9.62-7-18.17-17-20.84-23.58-6.36-47.58 3.79-60.06 25.37-1.82 3.15-3.68 6.28-6.04 10.32zm209.81 358.04-91.41-157.86h-180.89l-92 159.49h182.22l89.92 157.11z"/></g></svg>
+    </div>
   </div>
 
   <h1>
@@ -214,8 +248,7 @@ footer{border-top:1px solid var(--rule);padding:32px clamp(20px,5vw,72px);displa
   </h1>
 
   <p class="hero-sub">
-    You are overpaying people who should be fired and underpaying the ones carrying everyone else.
-    You just don't know <span class="inline-code">which_is_which</span>.
+    You're overpaying people who should be fired and underpaying the ones carrying everyone else — you just don't know which is which.
   </p>
 
   <div class="cta-row">
@@ -223,304 +256,291 @@ footer{border-top:1px solid var(--rule);padding:32px clamp(20px,5vw,72px);displa
     <button class="btn-ghost">▷ &nbsp;see_live_demo()</button>
   </div>
 
-  <div class="terminal" style="margin-left:auto;margin-right:auto">
-    <div class="term-bar">
-      <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
-    </div>
-    <div class="term-body">
-      <span class="line"><span class="t-dim">$ </span><span class="t-white">unmask scan --org acme-corp --days 30</span></span>
-      <span class="line"><span class="t-green">✓ connected:</span><span class="t-mid"> github · jira · slack · figma</span></span>
-      <span class="line"><span class="t-dim">  scanning 94 employees · 30 days of signals...</span></span>
-      <span class="line">&nbsp;</span>
-      <span class="line"><span class="t-ember">! flight_risk</span><span class="t-mid">      priya.k   · senior_eng   · score 9.1/10 · underpaid $38K</span></span>
-      <span class="line"><span class="t-red">! coasting</span><span class="t-mid">         marcus.t  · senior_eng   · score 2.1/10 · overpaid $42K</span></span>
-      <span class="line"><span class="t-green">✓ promo_ready</span><span class="t-mid">     diana.m   · designer     · score 7.4/10 · rising fast</span></span>
-      <span class="line">&nbsp;</span>
-      <span class="line"><span class="t-green">→ report ready</span><span class="t-dim">  /reports/acme-30d.json  [pay nothing if nothing surprises you]</span></span>
-    </div>
-  </div>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--bone);margin-top:14px;letter-spacing:0.04em;opacity:0;animation:up 0.4s ease 0.8s forwards">// free 30-day trial · no credit card</p>
+
 
   <div class="trust-bar" style="width:100%;max-width:600px">
     <div class="trust-label">// trusted_by fast-growing teams at</div>
-    <div class="trust-logos">
-      <span class="trust-logo">stripe</span>
-      <span class="trust-logo">rippling</span>
-      <span class="trust-logo">ramp</span>
-      <span class="trust-logo">brex</span>
-      <span class="trust-logo">deel</span>
-      <span class="trust-logo">gusto</span>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:36px;opacity:0.35">
+      <svg height="20" viewBox="0 0 60 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="16">stripe</text></svg>
+      <svg height="20" viewBox="0 0 100 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="900" font-size="13" letter-spacing="1">RIPPLING</text></svg>
+      <svg height="20" viewBox="0 0 52 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="900" font-size="16">Ramp</text></svg>
+      <svg height="20" viewBox="0 0 44 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="900" font-size="16">Brex</text></svg>
+      <svg height="20" viewBox="0 0 36 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="16">Deel</text></svg>
+      <svg height="20" viewBox="0 0 54 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="16">Gusto</text></svg>
+      <svg height="20" viewBox="0 0 58 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="16">Notion</text></svg>
+      <svg height="20" viewBox="0 0 52 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="16">Figma</text></svg>
+      <svg height="20" viewBox="0 0 58 20" fill="#E8E4DC" xmlns="http://www.w3.org/2000/svg"><text y="16" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" font-size="16">Linear</text></svg>
     </div>
   </div>
 </section>
 
-<!-- STAT BAND -->
-<div class="stat-band border-t">
-  <div class="stat-cell">
-    <div class="stat-num">$280K</div>
-    <div class="stat-label">avg cost to replace one engineer<em>// flags flight risk before they decide to leave</em></div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-num">30 days</div>
-    <div class="stat-label">to first full org report<em>// no surveys · no new tools · zero behavior change</em></div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-num">$0</div>
-    <div class="stat-label">if nothing surprises you<em>// pay nothing if the report doesn't change how you see your org</em></div>
-  </div>
-</div>
 
-<!-- PG QUOTE -->
-<section class="py-64 px-page border-t" style="background:var(--surface)">
-  <div class="container" style="max-width:760px">
-    <div class="section-label">written in 2004. still true today.</div>
-    <div style="border-left:2px solid var(--ember);padding-left:28px;margin-bottom:32px">
-      <p style="font-size:clamp(16px,2vw,22px);color:var(--paper);line-height:1.7;font-weight:300;font-style:italic">"The single biggest problem afflicting large companies is the difficulty of assigning a value to each person's work. For the most part they punt. Salespeople are an exception — easy to measure how much revenue they generate. Everyone else? The company has no way of measuring the value of their work."</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--bone);margin-top:16px;letter-spacing:0.08em">// — paul_graham</p>
-    </div>
-    <div style="border-top:1px solid var(--rule);padding-top:24px">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:600;color:var(--paper);margin-bottom:6px">that was written in 2004.</p>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:600;color:var(--ember)">nothing has changed. until now.</p>
-    </div>
-  </div>
-</section>
 
 <!-- PROBLEM -->
 <section class="py-96 px-page border-t">
-  <div class="container">
+  <div class="container" style="max-width:820px">
     <div class="section-label">the_problem</div>
-    <h2 style="font-size:clamp(36px,6vw,72px);margin-bottom:24px">you're probably<br>paying the <span style="color:var(--ember)">wrong people.</span></h2>
-    <p style="font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--mid);max-width:560px;line-height:1.8;margin-bottom:56px">I've started companies of 3 people and worked at ones with thousands. The biggest problem at every single one was the same.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)">
-      <div style="background:var(--code);padding:40px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:52px;font-weight:700;color:var(--ember);line-height:1;margin-bottom:16px">$280K</div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mid);line-height:1.7">Average cost to replace one senior engineer. Recruiting fees, lost velocity, six months of institutional knowledge walking out the door.</p>
-      </div>
-      <div style="background:var(--surface);padding:40px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:52px;font-weight:700;color:var(--ember);line-height:1;margin-bottom:16px">3×</div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mid);line-height:1.7">Higher attrition among top performers who feel unrecognized. They have options. They leave first. You find out after. — McKinsey</p>
-      </div>
-      <div style="background:var(--code);padding:40px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:52px;font-weight:700;color:var(--ember);line-height:1;margin-bottom:16px">92%</div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mid);line-height:1.7">Of companies say their review process fails to identify real top performers. The process is broken. Everyone knows it. Nobody fixed it. — Deloitte</p>
-      </div>
+
+    <div style="border-left:3px solid var(--ember);padding-left:32px;margin-bottom:36px">
+      <p style="font-size:clamp(22px,2.8vw,34px);color:var(--paper);line-height:1.5;font-weight:700;margin-bottom:20px">"The single biggest problem afflicting large companies is the difficulty of assigning a value to each person's work. For the most part they punt. Salespeople are an exception — easy to measure how much revenue they generate. Everyone else? The company has no way of measuring the value of their work."</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--bone);letter-spacing:0.12em;text-transform:uppercase">Paul Graham</p>
     </div>
+
+    <div style="border-top:1px solid var(--rule);padding-top:28px;margin-bottom:48px">
+      <p style="font-size:clamp(18px,2vw,24px);font-weight:700;color:var(--paper);margin-bottom:4px">That was written in 2004.</p>
+      <p style="font-size:clamp(18px,2vw,24px);font-weight:700;color:var(--ember)">Nothing has changed. Until now.</p>
+    </div>
+
+
   </div>
 </section>
+
 
 <!-- DASHBOARD -->
 <section class="py-96 px-page border-t" id="how">
   <div class="container">
     <div class="section-label">live_report_cards</div>
-    <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:12px">every employee.<br>one <span style="color:var(--ember)">clear grade.</span></h2>
-    <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);max-width:560px;line-height:1.7;margin-bottom:40px">No more biased annual reviews. No more self-assessments that reward the loudest voice in the room. AI reads what your team actually produces — in the tools they already use — and gives every employee an honest grade.</p>
+    <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:16px">unmask fixes <span style="color:var(--ember)">org bloat.</span></h2>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);max-width:560px;line-height:1.7;margin-bottom:36px">Instead of relying on biased annual reviews or whoever has the best vibes, Unmask watches what your team actually does — in the tools they already use — and gives every employee one clear grade based on real output.</p>
+
     <div style="background:var(--code);border:1px solid var(--rule);overflow:hidden">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--rule);background:var(--surface)">
-        <div style="display:flex;align-items:center;gap:16px">
-          <div style="display:flex;align-items:center;gap:6px">
-            <div style="width:7px;height:7px;border-radius:50%;background:#28C840"></div>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--paper);font-weight:600">LIVE</span>
-          </div>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.08em">acme-corp // 47 employees tracked</span>
+
+      <!-- Bar -->
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-bottom:1px solid var(--rule);background:var(--surface)">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:7px;height:7px;border-radius:50%;background:#28C840"></div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--paper);font-weight:600">LIVE</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone)">// acme-corp</span>
         </div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ember);letter-spacing:0.1em;cursor:pointer">VIEW ALL →</span>
-      </div>
-      <!-- Magnified first row — Priya -->
-      <div style="border-bottom:1px solid var(--rule);background:rgba(232,82,26,0.04);padding:28px 24px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center">
-        <div>
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-            <div style="width:42px;height:42px;background:rgba(232,82,26,0.12);border:1px solid rgba(232,82,26,0.3);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;color:var(--ember)">P.K.</div>
-            <div>
-              <div style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:15px;color:var(--paper)">priya.k</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--bone);margin-top:1px">senior_engineer · engineering</div>
-            </div>
-            <span class="tag risk" style="margin-left:8px;font-size:10px;padding:4px 10px">⚠ flight_risk</span>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
-            <div style="background:var(--surface);border:1px solid var(--rule);padding:12px">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px">contribution</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--paper)">11 engineers unblocked</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--paper)">3 major launches</div>
-            </div>
-            <div style="background:var(--surface);border:1px solid var(--rule);padding:12px">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px">score</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--ember)">9.1<span style="font-size:12px;color:var(--bone)">/10</span></div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);margin-top:2px">↑ highest in org</div>
-            </div>
-            <div style="background:var(--surface);border:1px solid var(--rule);padding:12px">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px">comp_gap</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--red)">$38K</div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--red);margin-top:2px">underpaid · p34</div>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center;padding:0 16px">
-          <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:72px;color:var(--ember);line-height:1">A+</div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px">grade</div>
-        </div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ember);cursor:pointer">VIEW ALL →</span>
       </div>
 
-      <!-- Smaller rows -->
-      <div style="overflow-x:auto">
-        <table class="data-table">
-          <thead>
-            <tr><th>employee</th><th>role</th><th>what_ai_measured</th><th style="text-align:center">grade</th><th>signal</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><div class="name-bold">marcus.t</div><div style="font-size:10px;color:var(--bone);margin-top:2px">senior_engineer</div></td>
-              <td>engineering</td>
-              <td>low PR activity · minimal unblocking · output down 60% vs last quarter</td>
-              <td style="text-align:center"><span class="grade grade-c">C−</span></td>
-              <td><span class="tag" style="border-color:rgba(224,82,82,0.3);color:var(--red)">↓ dropping</span><div style="font-size:10px;color:var(--mid);margin-top:4px">overpaid ~$42K</div></td>
-            </tr>
-            <tr>
-              <td><div class="name-bold">diana.m</div><div style="font-size:10px;color:var(--bone);margin-top:2px">product_designer</div></td>
-              <td>design</td>
-              <td>strong figma output · unblocking cross-functional · designs shipping on time</td>
-              <td style="text-align:center"><span class="grade grade-b">B+</span></td>
-              <td><span class="tag good">↑ rising</span><div style="font-size:10px;color:var(--mid);margin-top:4px">promo_candidate</div></td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- Priya — featured -->
+      <div style="border-bottom:1px solid var(--rule);background:rgba(232,82,26,0.04);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+        <div style="display:flex;align-items:center;gap:12px;flex:1">
+          <div style="width:36px;height:36px;flex-shrink:0;background:rgba(232,82,26,0.12);border:1px solid rgba(232,82,26,0.3);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;color:var(--ember)">P.K.</div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;color:var(--paper)">priya.k <span style="font-weight:400;color:var(--bone);font-size:11px">· senior_engineer</span></div>
+            <div style="margin-top:5px;display:flex;gap:6px;flex-wrap:wrap">
+              <span class="tag risk" style="font-size:9px;padding:2px 8px">⚠ flight_risk</span>
+              <span class="tag" style="border-color:rgba(224,82,82,0.3);color:var(--red);font-size:9px;padding:2px 8px">underpaid $38K</span>
+            </div>
+          </div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:56px;color:var(--ember);line-height:1;flex-shrink:0">A+</div>
       </div>
+
+      <!-- Marcus -->
+      <div style="border-bottom:1px solid var(--rule);padding:14px 24px;display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:32px;height:32px;flex-shrink:0;background:var(--surface);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone)">M.T.</div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--paper)">marcus.t <span style="color:var(--bone);font-size:10px">· senior_engineer</span></div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--red);margin-top:3px">↓ coasting · overpaid $42K</div>
+          </div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:32px;color:var(--red);flex-shrink:0">C−</div>
+      </div>
+
+      <!-- Diana -->
+      <div style="padding:14px 24px;display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:32px;height:32px;flex-shrink:0;background:var(--surface);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone)">D.M.</div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--paper)">diana.m <span style="color:var(--bone);font-size:10px">· product_designer</span></div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);margin-top:3px">↑ rising · promo candidate</div>
+          </div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:32px;color:var(--paper);flex-shrink:0">B+</div>
+      </div>
+
+      <!-- Footer note -->
       <div style="padding:10px 20px;border-top:1px solid var(--rule);background:var(--surface)">
-        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.06em">// grades generated from slack · github · jira · figma · no manager input · no surveys · nothing changes for your team</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.06em">// from slack · github · jira · figma · no manager input · no surveys</p>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- HOW IT WORKS -->
 <section class="py-96 px-page border-t" style="background:var(--surface)">
   <div class="container">
     <div class="section-label">how_it_works</div>
-    <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:56px">three steps.<br><span style="color:var(--ember)">total clarity.</span></h2>
+    <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:12px">how it <span style="color:var(--ember)">works.</span></h2>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);max-width:520px;line-height:1.7;margin-bottom:48px">You shouldn't find out your best employee was about to quit at their exit interview. Unmask tells you before that happens.</p>
     <div class="steps">
       <div class="step">
         <div class="step-num">01</div>
-        <h3>connect_your_tools()</h3>
-        <p>Takes 24 hours. GitHub, Jira, Slack, Figma, Salesforce — whatever your team already uses. Nothing new for your employees. Nothing changes for them.</p>
-        <div class="tool-tags">
-          <span class="tag">github</span><span class="tag">jira</span><span class="tag">slack</span><span class="tag">figma</span><span class="tag">salesforce</span>
+        <h3>connect()</h3>
+        <p>Connect the tools your company already uses — chat, email, meetings, project management, and more.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;align-items:center">
+
+          <!-- GitHub -->
+          <div style="display:flex;align-items:center;gap:7px;border:1px solid var(--rule);padding:5px 8px;background:var(--surface);white-space:nowrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--mid)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mid)">GitHub</span>
+          </div>
+
+          <!-- Slack -->
+          <div style="display:flex;align-items:center;gap:7px;border:1px solid var(--rule);padding:5px 8px;background:var(--surface);white-space:nowrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52z" fill="#E01E5A"/>
+              <path d="M6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z" fill="#E01E5A"/>
+              <path d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834z" fill="#36C5F0"/>
+              <path d="M8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z" fill="#36C5F0"/>
+              <path d="M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834z" fill="#2EB67D"/>
+              <path d="M17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z" fill="#2EB67D"/>
+              <path d="M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52z" fill="#ECB22E"/>
+              <path d="M15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#ECB22E"/>
+            </svg>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mid)">Slack</span>
+          </div>
+
+          <!-- Jira -->
+          <div style="display:flex;align-items:center;gap:7px;border:1px solid var(--rule);padding:5px 8px;background:var(--surface);white-space:nowrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M11.975 0L5.988 5.987 0 11.975l5.988 5.988L11.975 24l5.988-5.987-5.988-5.988 5.988-5.988L11.975 0z" fill="#2684FF"/>
+              <path d="M11.975 5.987L8.981 8.981l2.994 2.994 2.994-2.994-2.994-2.994zM11.975 18.013l-2.994-2.994 2.994-2.994 2.994 2.994-2.994 2.994z" fill="url(#jira-grad)"/>
+              <defs><linearGradient id="jira-grad" x1="11.975" y1="5.987" x2="11.975" y2="18.013" gradientUnits="userSpaceOnUse"><stop stop-color="#0052CC"/><stop offset="1" stop-color="#2684FF"/></linearGradient></defs>
+            </svg>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mid)">Jira</span>
+          </div>
+
+          <!-- Figma -->
+          <div style="display:flex;align-items:center;gap:7px;border:1px solid var(--rule);padding:5px 8px;background:var(--surface);white-space:nowrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M8 24c2.208 0 4-1.792 4-4v-4H8c-2.208 0-4 1.792-4 4s1.792 4 4 4z" fill="#0ACF83"/>
+              <path d="M4 12c0-2.208 1.792-4 4-4h4v8H8c-2.208 0-4-1.792-4-4z" fill="#A259FF"/>
+              <path d="M4 4c0-2.208 1.792-4 4-4h4v8H8C5.792 8 4 6.208 4 4z" fill="#F24E1E"/>
+              <path d="M12 0h4c2.208 0 4 1.792 4 4s-1.792 4-4 4h-4V0z" fill="#FF7262"/>
+              <path d="M20 12c0 2.208-1.792 4-4 4s-4-1.792-4-4 1.792-4 4-4 4 1.792 4 4z" fill="#1ABCFE"/>
+            </svg>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mid)">Figma</span>
+          </div>
+
+          <!-- Salesforce -->
+          <div style="display:flex;align-items:center;gap:7px;border:1px solid var(--rule);padding:5px 8px;background:var(--surface);white-space:nowrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#00A1E0"><path d="M10.003 3.003C11.14 1.12 13.22 0 15.5 0c3.084 0 5.668 2.07 6.344 4.914C23.05 5.504 24 6.87 24 8.457c0 2.29-1.856 4.146-4.146 4.146-.285 0-.563-.03-.834-.083-.67 1.527-2.2 2.583-3.98 2.583-.442 0-.87-.07-1.27-.2-.744 1.58-2.36 2.674-4.23 2.674-1.77 0-3.32-.963-4.1-2.38-.274.056-.555.085-.843.085C2.335 15.282 0 12.946 0 10.05c0-1.944 1.063-3.647 2.637-4.556-.11-.37-.17-.758-.17-1.16 0-2.27 1.84-4.11 4.11-4.11 1.36 0 2.566.662 3.326 1.68"/></svg>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mid)">Salesforce</span>
+          </div>
+
         </div>
       </div>
       <div class="step" style="border-top:2px solid var(--ember)">
         <div class="step-num" style="opacity:1">02</div>
-        <h3>ai_scans_24_7()</h3>
-        <p>Unmask runs continuously in the background — reading real output, not opinions. Who unblocks people. Who drives outcomes. Who coasts on team momentum. Contribution patterns built over months, not snapshots.</p>
+        <h3>scan()</h3>
+        <p>Instead of relying on gut feel or biased reviews, Unmask watches what people actually do every day and gives each person an honest grade.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
-        <h3>act_before_its_too_late()</h3>
-        <p>When an A-player's score starts slipping, you get an alert immediately. Not at their exit interview. Not when you're writing the postmortem. Right now — while you can still do something about it.</p>
+        <h3>act()</h3>
+        <p>You find out who's about to quit, who deserves a raise, and who's been coasting — in time to actually do something about it.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MOAT -->
+<!-- MONEYBALL -->
 <section class="py-96 px-page border-t">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
       <div>
-        <div class="section-label">why_this_is_hard_to_copy</div>
-        <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:20px">gets smarter every month.<br><span style="color:var(--ember)">impossible to catch.</span></h2>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:16px">Every company we onboard improves the shared model. A new customer on day one gets a contribution model calibrated against thousands of engineers across hundreds of companies.</p>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);line-height:1.8">A competitor starting today starts with zero data. That gap widens every month. This isn't a feature advantage. It's a physics advantage.</p>
+        <div class="section-label">the_insight</div>
+        <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:20px">what moneyball<br>did to baseball.<span style="color:var(--ember)"><br>we do it to your org.</span></h2>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);line-height:1.8;max-width:380px">Everyone chased sluggers — big names, big swings, obvious talent. Beane ignored all of that and asked one question: what actually wins games?</p>
       </div>
-      <div class="moat-grid">
-        <div class="moat-cell">
-          <div class="moat-num">01 // data_network_effect</div>
-          <h3>Cross-company model</h3>
-          <p style="font-size:12px;color:var(--mid);line-height:1.7;margin-top:6px">Every customer anonymously improves the benchmarks. The flight risk signals get sharper. The comp misalignment flags get more accurate. Competitors start with nothing.</p>
-        </div>
-        <div class="moat-cell">
-          <div class="moat-num">02 // history_lock_in</div>
-          <h3>Org memory you can't migrate</h3>
-          <p style="font-size:12px;color:var(--mid);line-height:1.7;margin-top:6px">After 12 months, Unmask holds a year of contribution trends and departure patterns. If you switch, you lose all of it. There's no export for institutional memory.</p>
-        </div>
-        <div class="moat-cell">
-          <div class="moat-num">03 // workflow_entrenchment</div>
-          <h3>Built into the hardest decisions</h3>
-          <p style="font-size:12px;color:var(--mid);line-height:1.7;margin-top:6px">Once Unmask is used in comp and promo reviews, removing it means rebuilding the most politically sensitive process in the company. Nobody wants to redo that.</p>
-        </div>
-        <div class="moat-cell">
-          <div class="moat-num">04 // category_definition</div>
-          <h3>First to own the category</h3>
-          <p style="font-size:12px;color:var(--mid);line-height:1.7;margin-top:6px">First to own "people intelligence" sets the standard everything else is compared to. Salesforce did this for revenue. We're doing it for contribution.</p>
+      <div style="background:var(--code);border:1px solid var(--rule);padding:36px">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--mid);line-height:1.8;margin-bottom:20px">Most companies hire and promote the same way — whoever is loudest, most visible, best at managing up.</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--paper);line-height:1.8;margin-bottom:24px">Unmask asks the same question Beane asked: what actually moves the company forward? The answer is almost never who you think.</p>
+        <div style="border-top:1px solid var(--rule);padding-top:16px">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ember)">// stop paying for sluggers. find out who actually wins games.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CASE STUDY -->
+<!-- THE FUTURE -->
+<section class="py-96 px-page border-t" style="background:var(--surface)">
+  <div class="container">
+    <div class="section-label">what_comes_next</div>
+    <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:12px">we start with people.<br><span style="color:var(--ember)">but the rot goes deeper.</span></h2>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);max-width:520px;line-height:1.8;margin-bottom:56px">Every company accumulates invisible bloat. It's not just people — it's everything. And none of it shows up in your metrics.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);margin-bottom:1px">
+
+      <div style="background:var(--ink);padding:32px 28px">
+        <div style="width:36px;height:36px;background:rgba(232,82,26,0.12);border:1px solid rgba(232,82,26,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:16px">👤</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ember);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px">People</div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--bone);line-height:1.7">Someone on your payroll hasn't done real work in months. You just can't prove it yet.</p>
+      </div>
+
+      <div style="background:var(--ink);padding:32px 28px">
+        <div style="width:36px;height:36px;background:rgba(232,82,26,0.12);border:1px solid rgba(232,82,26,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:16px">⚙️</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ember);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px">Processes</div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--bone);line-height:1.7">A process from 2021 your team still runs every week. Nobody knows why.</p>
+      </div>
+
+      <div style="background:var(--ink);padding:32px 28px">
+        <div style="width:36px;height:36px;background:rgba(232,82,26,0.12);border:1px solid rgba(232,82,26,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:16px">🛠️</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ember);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px">Tools</div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--bone);line-height:1.7">A tool everyone hates but nobody cancels.</p>
+      </div>
+
+      <div style="background:var(--ink);padding:32px 28px">
+        <div style="width:36px;height:36px;background:rgba(232,82,26,0.12);border:1px solid rgba(232,82,26,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:16px">📋</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ember);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px">Decisions</div>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--bone);line-height:1.7">A 2022 decision still shaping how you work. Never revisited.</p>
+      </div>
+
+    </div>
+
+    <div style="background:var(--ink);border:1px solid var(--rule);border-top:2px solid var(--ember);padding:32px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap">
+      <div style="max-width:560px">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:8px">It compounds quietly. Costs go up. Output goes down. Your best people get frustrated and leave.</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;color:var(--paper);line-height:1.8">Unmask starts with people. We're building the first tool to find all of it.</p>
+      </div>
+      <button class="btn-primary" style="white-space:nowrap;flex-shrink:0">→ join the waitlist</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROOF SECTION -->
 <section class="py-96 px-page border-t" id="case" style="background:var(--surface)">
   <div class="container">
-    <div class="section-label">the_$280k_mistake</div>
-    <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:16px">they didn't see it coming.<br><span style="color:var(--ember)">unmask did.</span></h2>
-    <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);max-width:480px;line-height:1.8;margin-bottom:48px">A real story. Numbers are typical. The outcome is not.</p>
-    <div class="case-grid">
-      <div class="case-cell">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--bone);margin-bottom:20px;font-weight:600">// without_unmask</div>
-        <p style="font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:12px">Priya. Senior engineer. 4 years in. Mid-band salary. Annual review: 3 out of 5. Raise: 4%.</p>
-        <p style="font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:12px">Her manager called her "solid and reliable." Six months later she left for $45,000 more.</p>
-        <p style="font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:12px">Within 90 days: team velocity dropped 28%. Two engineers she'd been unblocking started interviewing.</p>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--red)">// postmortem: we didn't see it coming.</p>
-        <div style="border-top:1px solid var(--rule);margin-top:24px;padding-top:20px">
-          <div class="big-num" style="color:var(--red)">$280K</div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--bone);letter-spacing:0.08em;margin-top:4px">// total_replacement_cost</div>
-        </div>
-      </div>
-      <div class="case-cell accent">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ember);margin-bottom:20px;font-weight:600">✓ with_unmask</div>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px">
-          <div style="display:flex;gap:10px;align-items:flex-start">
-            <span style="color:var(--ember);font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:2px">→</span>
-            <p style="font-size:12px;color:var(--mid);line-height:1.6">#1 unblocking node in a 40-person org. 11 engineers unblocked directly by her.</p>
-          </div>
-          <div style="display:flex;gap:10px;align-items:flex-start">
-            <span style="color:var(--ember);font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:2px">→</span>
-            <p style="font-size:12px;color:var(--mid);line-height:1.6">Fingerprints on 3 major launches. Never attributed — the PM presented the work.</p>
-          </div>
-          <div style="display:flex;gap:10px;align-items:flex-start">
-            <span style="color:var(--ember);font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:2px">→</span>
-            <p style="font-size:12px;color:var(--mid);line-height:1.6">Flight risk score: 2.3 SD above mean. Highest in the engineering org.</p>
-          </div>
-          <div style="display:flex;gap:10px;align-items:flex-start">
-            <span style="color:var(--ember);font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:2px">→</span>
-            <p style="font-size:12px;color:var(--mid);line-height:1.6">Underpaid by ~$38K/year. 34th percentile for her role.</p>
-          </div>
-        </div>
-        <div style="border-top:1px solid var(--rule);padding-top:20px">
-          <div class="big-num" style="color:var(--ember)">$38K</div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--bone);letter-spacing:0.08em;margin-top:4px">// raise_that_would_have_kept_her</div>
-        </div>
-      </div>
-    </div>
-    <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mid);text-align:center;margin-top:32px">// every company over 200 people has a priya. most have no idea. <span style="color:var(--paper)">some of those priyas are already interviewing.</span></p>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="py-96 px-page border-t">
-  <div class="container">
     <div class="section-label">real_results</div>
-    <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:40px">what customers <span style="color:var(--ember)">say.</span></h2>
-    <div class="quote-grid">
-      <div class="quote-cell">
-        <p class="quote-text">"We found out our top performer was about to quit. Unmask flagged it two weeks before she said anything. We promoted her. She's still here."</p>
-        <div class="quote-source"><strong>revolut</strong>CTO</div>
+
+    <!-- Big stat -->
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;margin-bottom:64px;padding-bottom:48px;border-bottom:1px solid var(--rule)">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(72px,10vw,120px);color:var(--ember);line-height:1">$280K</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--bone);letter-spacing:0.1em;margin-top:4px">// the cost of not knowing</div>
       </div>
-      <div class="quote-cell">
-        <p class="quote-text">"I thought I knew my team. The person I thought was my best engineer was coasting. The one I almost let go was carrying the whole product."</p>
-        <div class="quote-source"><strong>stripe</strong>VP Engineering</div>
-      </div>
-      <div class="quote-cell" style="grid-column:span 2;background:var(--surface)">
-        <p class="quote-text" style="font-size:18px;text-align:center">"Losing one great employee costs more than Unmask costs for three years. In our first six months, we kept four. Do the math."</p>
-        <div class="quote-source" style="text-align:center"><strong>ramp</strong>Chief People Officer</div>
+      <div style="max-width:480px">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--paper);line-height:1.7;margin-bottom:12px">A senior engineer was carrying the whole team. Her manager called her "solid." She got a 4% raise and left for $45K more.</p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);line-height:1.7">Team velocity dropped 28%. Two other engineers started interviewing. The raise that would have kept her: <span style="color:var(--ember)">$38K.</span></p>
       </div>
     </div>
+
+    <!-- Three quotes -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)">
+      <div style="background:var(--code);padding:28px">
+        <p style="font-size:15px;color:var(--paper);line-height:1.7;font-style:italic;margin-bottom:20px">"Unmask told us our best engineer was about to quit two weeks before she said anything. We promoted her. She stayed."</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.1em;text-transform:uppercase;border-top:1px solid var(--rule);padding-top:14px"><span style="color:var(--ember);display:block;font-size:11px;margin-bottom:2px">Revolut</span>CTO</div>
+      </div>
+      <div style="background:var(--code);padding:28px">
+        <p style="font-size:15px;color:var(--paper);line-height:1.7;font-style:italic;margin-bottom:20px">"The engineer I thought was my best was coasting. The one I almost fired was holding the whole thing together."</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.1em;text-transform:uppercase;border-top:1px solid var(--rule);padding-top:14px"><span style="color:var(--ember);display:block;font-size:11px;margin-bottom:2px">Stripe</span>VP Engineering</div>
+      </div>
+      <div style="background:var(--code);padding:28px">
+        <p style="font-size:15px;color:var(--paper);line-height:1.7;font-style:italic;margin-bottom:20px">"One good person leaving costs more than Unmask costs for three years. We kept four people in the first six months."</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--bone);letter-spacing:0.1em;text-transform:uppercase;border-top:1px solid var(--rule);padding-top:14px"><span style="color:var(--ember);display:block;font-size:11px;margin-bottom:2px">Ramp</span>Chief People Officer</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -538,30 +558,20 @@ footer{border-top:1px solid var(--rule);padding:32px clamp(20px,5vw,72px);displa
       </div>
       <div class="letter-body">
         <p>To whoever is running a team right now,</p>
-        <p>I've started companies of 3 people and worked at ones with thousands.</p>
-        <p>The biggest problem at every single one was the same:</p>
-        <p>We always overpaid employees who should have been fired — and underpaid the silent killers who were carrying everyone else. And nobody could prove it either way.</p>
-        <p>So you walk around with three questions you can't answer:</p>
+        <p>The team you build is the company you build. Especially early on, when you have very few dollars and you're competing in the world's most competitive market — the market for people.</p>
+        <p>After I sold my last company, I knew exactly what I wanted to fix next. People are the biggest cost on any balance sheet — and everyone is trying to cut bloat without knowing where it actually lives.</p>
+        <p>The problem I kept running into: I never really knew who was good. I went on vibes. We overpaid people who should have been fired and underpaid the ones carrying the company. Nobody could prove it either way.</p>
         <div class="letter-qs">
           <p>Is my highest-paid engineer actually my best one?</p>
-          <p>Did the person who quit last month carry three others — and I had no idea?</p>
+          <p>Did the person who quit last month carry three others without me knowing?</p>
           <p>Am I about to lose someone and only find out when they hand in their notice?</p>
         </div>
-        <p>You're making million-dollar decisions about people using gut feel and once-a-year reviews that everyone knows are political.</p>
-        <p>That's why we built Unmask. AI watches what your team actually does every day — in the tools they already use — and gives every employee a clear, honest grade.</p>
-        <p>No surveys. No manager opinions. No new tools for your team.</p>
-        <p>Just the truth about who is carrying your company. And who isn't.</p>
+        <p>Unmask gives everyone an honest grade based on what they actually do. No surveys. No gut feel. Just the truth.</p>
       </div>
       <div style="margin-top:36px">
-        <p style="font-family:'Georgia',serif;font-size:15px;color:#2a2a2a;margin-bottom:12px">Sincerely,</p>
-        <svg viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg" style="width:180px;height:44px;margin-bottom:6px">
-          <path d="M 10 40 C 15 25,20 20,28 30 C 32 35,30 42,35 38 C 40 34,38 25,45 28 C 50 30,48 40,53 36" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <path d="M 58 28 C 63 22,70 20,75 28 C 78 33,74 40,80 36 C 85 32,83 24,90 26 C 95 28,92 36,98 33 C 103 30,100 22,107 24" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <path d="M 53 36 C 55 44,58 48,62 44" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <path d="M 136 22 C 140 30,138 36,143 32 C 148 28,145 20,152 22 C 157 24,154 34,160 30 C 164 27,162 20,168 22 C 173 24,170 34,176 30 C 180 27,185 30,188 36 C 190 40,188 46,192 44" stroke="#1a1a1a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        </svg>
-        <div class="letter-sign">Sam</div>
-        <div class="letter-title">founder & ceo, unmask</div>
+        <p style="font-family:'Georgia',serif;font-size:15px;color:#2a2a2a;margin-bottom:20px">Sincerely,</p>
+        <div style="font-family:'Dancing Script','Brush Script MT',cursive;font-size:52px;color:#1a1a1a;line-height:1;margin-bottom:8px;letter-spacing:-0.01em">Sam</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-top:6px">Founder & CEO, Unmask</div>
       </div>
     </div>
   </div>
@@ -571,46 +581,33 @@ footer{border-top:1px solid var(--rule);padding:32px clamp(20px,5vw,72px);displa
 <section class="py-96 px-page border-t" id="pricing">
   <div class="container">
     <div class="section-label">pricing</div>
-    <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:12px">start with a <span style="color:var(--ember)">report.</span><br>scale with intelligence.</h2>
-    <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);max-width:480px;line-height:1.8;margin-bottom:48px">Pay nothing if the 30-day report doesn't change how you see your org.</p>
-    <div class="price-grid">
-      <div class="price-cell">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--bone);margin-bottom:16px;font-weight:600">// one_time_report</div>
-        <div class="price-num">$5K</div>
-        <div class="price-period">flat fee · no contract</div>
-        <div class="price-list" style="margin-top:24px;display:flex;flex-direction:column;gap:8px">
-          <div class="price-item">30-day full org scan</div>
-          <div class="price-item">contribution map every employee</div>
-          <div class="price-item">top 3 flight risk flags</div>
-          <div class="price-item">comp misalignment report</div>
-          <div class="price-item">VP can expense it</div>
-        </div>
-      </div>
+    <h2 style="font-size:clamp(28px,4vw,52px);margin-bottom:12px">simple <span style="color:var(--ember)">pricing.</span></h2>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);max-width:480px;line-height:1.8;margin-bottom:48px">If you're not surprised by what you find out, you pay nothing.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);max-width:720px">
       <div class="price-cell featured">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ember);margin-bottom:16px;font-weight:600">// ongoing · most popular</div>
         <div class="price-num">$150<span style="font-size:16px;color:var(--bone);font-family:'JetBrains Mono',monospace;font-weight:400">/seat/mo</span></div>
-        <div class="price-period">min 25 seats · annual contract</div>
-        <div class="price-list" style="margin-top:24px;display:flex;flex-direction:column;gap:8px">
-          <div class="price-item">24/7 continuous scanning</div>
+        <div class="price-period" style="margin-top:4px;margin-bottom:20px">billed annually · min 25 seats</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div class="price-item">24/7 scanning of GitHub, Jira, Slack</div>
           <div class="price-item">real-time flight risk alerts</div>
-          <div class="price-item">weekly manager digests</div>
-          <div class="price-item">monthly org health score</div>
-          <div class="price-item">all report features included</div>
+          <div class="price-item">grade for every employee</div>
+          <div class="price-item">weekly digest for managers</div>
         </div>
       </div>
       <div class="price-cell">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--bone);margin-bottom:16px;font-weight:600">// enterprise</div>
         <div class="price-num">custom</div>
-        <div class="price-period">500+ employees</div>
-        <div class="price-list" style="margin-top:24px;display:flex;flex-direction:column;gap:8px">
-          <div class="price-item">M&A due diligence module</div>
+        <div class="price-period" style="margin-top:4px;margin-bottom:20px">500+ employees</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div class="price-item">everything in standard</div>
           <div class="price-item">HRIS integrations</div>
-          <div class="price-item">custom benchmarking</div>
-          <div class="price-item">dedicated CSM</div>
-          <div class="price-item">API access</div>
+          <div class="price-item">M&A due diligence</div>
+          <div class="price-item">dedicated support</div>
         </div>
       </div>
     </div>
+
+    <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--bone);margin-top:20px">// replacing one engineer costs $280K. unmask pays for itself the first time it stops that from happening.</p>
   </div>
 </section>
 
@@ -618,7 +615,7 @@ footer{border-top:1px solid var(--rule);padding:32px clamp(20px,5vw,72px);displa
 <section class="final-cta border-t" style="background:var(--surface)">
   <div class="section-label" style="justify-content:center;margin-bottom:32px">stop_guessing.start_knowing.</div>
   <h2 class="final-h">find out who's<br>actually doing<br>the <span class="ember">work.</span></h2>
-  <p class="final-sub">Run your first scan in 24 hours. No setup. No surveys. Just answers.</p>
+  <p class="final-sub">Live in 24 hours. Nothing changes for your team.</p>
   <button class="btn-primary" style="margin:0 auto;font-size:15px;padding:18px 48px">→ run_first_scan()</button>
   <p class="final-note">$5,000 flat · pay nothing if nothing surprises you · no credit card required</p>
 </section>
